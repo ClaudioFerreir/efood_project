@@ -8,6 +8,7 @@ export const Imagem = styled.header`
   height: 364px;
   width: 100%;
   padding: 40px 0;
+  margin-bottom: 80px;
 `
 export const Logo = styled.img`
   width: 100%;
