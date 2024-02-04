@@ -6,7 +6,6 @@ export const Card = styled.div`
   border: 1px solid ${cores.salmon};
   width: 472px;
   position: relative;
-  margin-bottom: 48px;
 
   img {
     width: 100%;

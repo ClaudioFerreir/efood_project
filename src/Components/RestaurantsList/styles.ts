@@ -6,4 +6,5 @@ export const ListContainer = styled.ul`
   justify-items: center;
   grid-template-columns: 1fr 1fr;
   column-gap: 80px;
+  row-gap: 48px;
 `
