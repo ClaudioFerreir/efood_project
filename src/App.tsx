@@ -2,7 +2,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
 import HeaderHome from './Components/HeaderHome'
 import { GlobalCss } from './styles'
-import CardList from './Components/CardList'
+import RestaurantsList from './Components/RestaurantsList'
 
 const rotas = createBrowserRouter([
   {
@@ -10,7 +10,7 @@ const rotas = createBrowserRouter([
     element: (
       <>
         <HeaderHome />
-        <CardList />
+        <RestaurantsList />
       </>
     )
   }

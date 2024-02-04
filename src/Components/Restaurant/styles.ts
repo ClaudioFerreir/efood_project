@@ -13,11 +13,11 @@ export const Card = styled.div`
   }
 `
 
-export const CardTemplate = styled.div`
+export const RestaurantInfo = styled.div`
   padding: 8px;
 `
 
-export const ProductTag = styled.div`
+export const RestaurantTag = styled.div`
   position: absolute;
   top: 16px;
   right: 16px;
@@ -27,7 +27,7 @@ export const ProductTag = styled.div`
   }
 `
 
-export const CardHeader = styled.div`
+export const RestaurantHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -44,7 +44,7 @@ export const Rate = styled.span`
   }
 `
 
-export const Description = styled.p`
+export const RestaurantDescription = styled.p`
   font-size: 14px;
   line-height: 22px;
   font-weight: 400;
