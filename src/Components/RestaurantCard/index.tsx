@@ -19,7 +19,7 @@ type Props = {
   useLink?: boolean
 }
 
-const Restaurant = ({
+const RestaurantCard = ({
   image,
   infoTags,
   title,
@@ -49,4 +49,4 @@ const Restaurant = ({
   </div>
 )
 
-export default Restaurant
+export default RestaurantCard
