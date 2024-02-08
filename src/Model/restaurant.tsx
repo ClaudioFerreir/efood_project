@@ -5,6 +5,7 @@ class Restaurant {
   title: string
   rate: number
   description: string
+  to: string = '/perfil'
 
   constructor(
     id: number,
@@ -12,7 +13,8 @@ class Restaurant {
     infoTags: string[],
     title: string,
     rate: number,
-    description: string
+    description: string,
+    to: string
   ) {
     this.id = id
     this.image = image
@@ -20,6 +22,7 @@ class Restaurant {
     this.title = title
     this.rate = rate
     this.description = description
+    this.to = to
   }
 }
 

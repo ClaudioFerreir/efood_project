@@ -16,7 +16,7 @@ const RestaurantsList = ({ restaurants }: Props) => (
         title={restaurant.title}
         rate={restaurant.rate}
         description={restaurant.description}
-        useLink
+        to={restaurant.to}
       />
     ))}
   </ListContainer>

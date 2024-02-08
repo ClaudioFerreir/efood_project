@@ -4,8 +4,9 @@ import { TagContainer } from '../Tag/styles'
 
 export const Card = styled.div`
   border: 1px solid ${cores.salmon};
-  width: 472px;
   position: relative;
+  height: 100%;
+  font-weight: 700;
 
   img {
     width: 100%;
@@ -14,6 +15,15 @@ export const Card = styled.div`
 
 export const RestaurantInfo = styled.div`
   padding: 8px;
+
+  a {
+    display: inline-block;
+    background-color: ${cores.salmon};
+    padding: 4px 6px;
+    text-decoration: none;
+    color: ${cores.ligthYellow};
+    font-size: 14px;
+  }
 `
 
 export const RestaurantTag = styled.div`
@@ -31,7 +41,6 @@ export const RestaurantHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   font-size: 18px;
-  font-weight: 700;
   margin-bottom: 16px;
 `
 

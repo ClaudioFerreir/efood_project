@@ -5,14 +5,14 @@ export const Imagem = styled.header`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 364px;
-  width: 100%;
-  padding: 40px 0;
+  height: 384px;
+  padding-top: 64px;
+  padding-bottom: 40px;
   margin-bottom: 80px;
 `
 export const Logo = styled.img`
   width: 100%;
-  width: 1225px;
+  width: 125px;
 `
 
 export const Titulo = styled.h2`

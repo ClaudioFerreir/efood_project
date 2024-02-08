@@ -1,17 +1,22 @@
 import styled from 'styled-components'
+import { cores } from '../../styles'
 
 export const Header = styled.header`
-  display: flex;
-  align-items: center;
   height: 186px;
 `
 
 export const HeaderContent = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
+  padding-top: 64px;
+  grid-template-columns: 1fr 1fr 1fr;
   font-weight: 900;
   font-size: 18px;
+
+  & > a {
+    color: ${cores.salmon};
+    text-decoration: none;
+  }
 
   & > p {
     display: flex;

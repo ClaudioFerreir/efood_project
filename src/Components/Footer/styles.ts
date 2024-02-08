@@ -14,15 +14,24 @@ export const FooterContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  & > img {
-    margin-bottom: 32px;
-    width: 125px;
-  }
-
   p {
     text-align: center;
     width: 480px;
     font-size: 10px;
-    margin-top: 80px;
+  }
+`
+
+export const Links = styled.ul`
+  display: flex;
+  list-style: none;
+  margin-top: 32px;
+  margin-bottom: 80px;
+`
+
+export const Link = styled.li`
+  margin-right: 8px;
+
+  & > img {
+    width: 125px;
   }
 `

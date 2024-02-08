@@ -4,12 +4,12 @@ import { cores } from '../../styles'
 export const Card = styled.li`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   height: 338px;
   width: 320px;
   background-color: ${cores.salmon};
   color: ${cores.ligthYellow};
   padding: 8px;
+  justify-content: space-between;
 
   img {
     width: 100%;

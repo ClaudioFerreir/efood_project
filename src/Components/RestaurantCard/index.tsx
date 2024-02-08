@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import Tag from '../Tag'
 import {
   Card,
@@ -16,7 +18,7 @@ type Props = {
   title: string
   rate: number
   description: string
-  useLink?: boolean
+  to: string
 }
 
 const RestaurantCard = ({
@@ -25,7 +27,7 @@ const RestaurantCard = ({
   title,
   rate,
   description,
-  useLink
+  to
 }: Props) => (
   <div>
     <Card>
@@ -43,7 +45,7 @@ const RestaurantCard = ({
           </Rate>
         </RestaurantHeader>
         <RestaurantDescription>{description}</RestaurantDescription>
-        <Tag useLink={useLink}>Saiba mais</Tag>
+        <Link to={to as string}>Saiba mais</Link>
       </RestaurantInfo>
     </Card>
   </div>
