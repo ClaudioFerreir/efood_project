@@ -5,7 +5,7 @@ export const Header = styled.header`
   height: 186px;
 `
 
-export const HeaderContent = styled.div`
+export const HeaderContent = styled.nav`
   display: grid;
   align-items: center;
   padding-top: 64px;
