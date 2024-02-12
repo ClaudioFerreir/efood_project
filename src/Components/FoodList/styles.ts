@@ -13,6 +13,22 @@ export const Banner = styled.div`
   height: 280px;
   padding-top: 24px;
   padding-bottom: 32px;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    height: 100%;
+    width: 100%;
+    content: '';
+    opacity: 0.58;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+  }
 `
 
 export const Title = styled.div`

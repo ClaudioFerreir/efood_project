@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import FoodCard from '../FoodCard'
 import { Banner, ListContainer, Title } from './styles'
 
-import perfilBanner from '../../assets/images/perfilBanner.png'
+import perfilBanner from '../../assets/images/BannerImg.png'
 
 const FoodList = () => {
   const { id } = useParams()
