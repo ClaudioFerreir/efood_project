@@ -7,7 +7,7 @@ type Props = {
 }
 
 const Button = ({ title, onClick, children }: Props) => (
-  <ButtonContainer title={title} onClick={onClick}>
+  <ButtonContainer type="button" title={title} onClick={onClick}>
     {children}
   </ButtonContainer>
 )
