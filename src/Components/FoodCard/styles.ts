@@ -11,11 +11,6 @@ export const Card = styled.li`
   padding: 8px;
   justify-content: space-between;
 
-  img {
-    width: 100%;
-    magin-bottom: 8px;
-  }
-
   h2 {
     font-size: 16px;
     font-weight: 900;
@@ -35,5 +30,27 @@ export const Card = styled.li`
     font-weight: 700;
     padding: 4px 0;
     cursor: pointer;
+  }
+`
+
+export const ImageContainer = styled.div`
+  position: relative;
+`
+
+export const Action = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.73);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+
+  &:hover {
+    opacity: 1;
   }
 `

@@ -7,5 +7,5 @@ export const ButtonContainer = styled.button`
   color: ${cores.salmon};
   font-size: 14px;
   font-weight: bold;
-  padding: 4px auto;
+  padding: 4px 6px;
 `

@@ -2,7 +2,7 @@ import { ButtonContainer } from './styles'
 
 type Props = {
   title: string
-  onClick: () => void
+  onClick?: () => void
   children: string
 }
 
