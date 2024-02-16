@@ -7,19 +7,21 @@ type Props = {
 }
 
 const RestaurantsList = ({ restaurants }: Props) => (
-  <ListContainer className="container">
-    {restaurants.map((restaurant) => (
-      <RestaurantCard
-        key={restaurant.id}
-        image={restaurant.image}
-        infoTags={restaurant.infoTags}
-        title={restaurant.title}
-        rate={restaurant.rate}
-        description={restaurant.description}
-        to={restaurant.to}
-      />
-    ))}
-  </ListContainer>
+  <>
+    <ListContainer className="container">
+      {restaurants.map((restaurant) => (
+        <RestaurantCard
+          key={restaurant.id}
+          image={restaurant.image}
+          infoTags={restaurant.infoTags}
+          title={restaurant.title}
+          rate={restaurant.rate}
+          description={restaurant.description}
+          to={restaurant.to}
+        />
+      ))}
+    </ListContainer>
+  </>
 )
 
 export default RestaurantsList
