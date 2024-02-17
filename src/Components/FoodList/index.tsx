@@ -163,13 +163,33 @@ type Props = {
   tag: string
 }
 
+type ModalState = {
+  title: string
+  isVisible: boolean
+  url: string
+  details: JSX.Element
+  price: number
+}
+
 const FoodList = ({ title, tag }: Props) => {
   const { id } = useParams()
 
-  const [modal, setModal] = useState(false)
+  const [modal, setModal] = useState<ModalState>({
+    title: '',
+    isVisible: false,
+    url: '',
+    details: <></>,
+    price: 0
+  })
 
   const closeModal = () => {
-    setModal(false)
+    setModal({
+      title: '',
+      isVisible: false,
+      url: '',
+      details: <></>,
+      price: 0
+    })
   }
 
   return (
@@ -185,15 +205,24 @@ const FoodList = ({ title, tag }: Props) => {
         </Title>
       </Banner>
       <ListContainer className="container">
-        {mock.map((food) => (
+        {mock.map((food, index) => (
           <Card key={food.id}>
             <ImageContainer
               onClick={() => {
-                setModal(true)
+                setModal({
+                  title: food.title,
+                  isVisible: true,
+                  url: food.image,
+                  details: food.details,
+                  price: food.price
+                })
               }}
             >
               <div>
-                <img src={food.image} alt="Imagem da comida" />
+                <img
+                  src={food.image}
+                  alt={`Imagem ${index} da comida ${food.title}`}
+                />
               </div>
               <Action>
                 <img src={zoom} alt="Clique aqui para mais detalhes" />
@@ -205,31 +234,19 @@ const FoodList = ({ title, tag }: Props) => {
           </Card>
         ))}
       </ListContainer>
-      <Modal className={modal ? 'visible' : ''}>
+      <Modal className={modal.isVisible ? 'visible' : ''}>
         <ModalContainer className="container">
           <CloseTag
             src={fechar}
             alt="fechar o modal"
             onClick={() => closeModal()}
           />
-          <FoodImg src={pizza} alt="imagem da comida" />
+          <FoodImg src={modal.url} alt="imagem da comida" />
           <Description>
-            <h4>Pizza Marguerita</h4>
-            <p>
-              A pizza Margherita é uma pizza clássica da culinária italiana,
-              reconhecida por sua simplicidade e sabor inigualável. Ela é feita
-              com uma base de massa fina e crocante, coberta com molho de tomate
-              fresco, queijo mussarela de alta qualidade, manjericão fresco e
-              azeite de oliva extra-virgem. A combinação de sabores é perfeita,
-              com o molho de tomate suculento e ligeiramente ácido, o queijo
-              derretido e cremoso e as folhas de manjericão frescas, que
-              adicionam um toque de sabor herbáceo. É uma pizza simples, mas
-              deliciosa, que agrada a todos os paladares e é uma ótima opção
-              para qualquer ocasião. <br />
-              Serve: de 2 a 3 pessoas
-            </p>
+            <h4>{modal.title}</h4>
+            {modal.details}
             <Button title="adicionar ao carrinho">
-              Adicionar ao carrinho - R$ 60,90
+              {`Adicionar ao carrinho - R$ ${modal.price.toFixed(2)}`}
             </Button>
           </Description>
         </ModalContainer>
