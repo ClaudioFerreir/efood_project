@@ -13,8 +13,10 @@ import {
 import starImg from '../../assets/icons/star.png'
 
 type Props = {
+  id: number
   image: string
-  infoTags: string[]
+  tag: string
+  favorite: boolean
   title: string
   rate: number
   description: string
@@ -22,8 +24,10 @@ type Props = {
 }
 
 const RestaurantCard = ({
+  id,
   image,
-  infoTags,
+  tag,
+  favorite,
   title,
   rate,
   description,
@@ -33,9 +37,8 @@ const RestaurantCard = ({
     <Card>
       <img src={image} alt="" />
       <RestaurantTag>
-        {infoTags.map((tag) => (
-          <Tag key={tag}>{tag}</Tag>
-        ))}
+        {favorite && <Tag key={id}>Destaque da Semana</Tag>}
+        <Tag key={tag}>{tag}</Tag>
       </RestaurantTag>
       <RestaurantInfo>
         <RestaurantHeader>
