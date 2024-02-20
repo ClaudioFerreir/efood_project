@@ -19,7 +19,7 @@ const RestaurantsList = ({ restaurants }: Props) => (
           title={restaurant.titulo}
           rate={restaurant.avaliacao}
           description={restaurant.descricao}
-          to="/"
+          to={`/perfil/${restaurant.id}`}
         />
       ))}
     </ListContainer>

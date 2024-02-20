@@ -16,6 +16,7 @@ export const Banner = styled.div`
   height: 280px;
   padding-top: 24px;
   padding-bottom: 32px;
+  background-size: cover;
 
   &::after {
     position: absolute;
@@ -87,6 +88,13 @@ export const Card = styled.li`
 
 export const ImageContainer = styled.div`
   position: relative;
+`
+
+export const ImageThumbNail = styled.img`
+  width: 100%;
+  height: 167px;
+  object-fit: cover;
+  cursor: pointer;
 `
 
 export const Action = styled.div`
