@@ -16,10 +16,11 @@ import {
   ImageThumbNail
 } from './styles'
 
+import { Cardapio, Restaurant } from '../../Pages/Home'
+
 import zoom from '../../assets/icons/zoom.png'
 import Button from '../Button'
 import fechar from '../../assets/icons/fechar.png'
-import { Cardapio, Restaurant } from '../../Pages/Home'
 
 type ModalState = {
   title: string
@@ -27,6 +28,13 @@ type ModalState = {
   url: string
   details: string
   price: number
+}
+
+const formataPreco = (preco = 0) => {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(preco)
 }
 
 const FoodList = () => {
@@ -128,7 +136,7 @@ const FoodList = () => {
             <h4>{modal.title}</h4>
             {modal.details}
             <Button title="adicionar ao carrinho">
-              {`Adicionar ao carrinho - R$ ${modal.price.toFixed(2)}`}
+              {`Adicionar ao carrinho - ${formataPreco(modal.price)}`}
             </Button>
           </Description>
         </ModalContainer>
