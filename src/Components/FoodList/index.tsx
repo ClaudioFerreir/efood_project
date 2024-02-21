@@ -37,6 +37,12 @@ const formataPreco = (preco = 0) => {
   }).format(preco)
 }
 
+const getDescricao = (descricao: string) => {
+  if (descricao.length > 95) {
+    return descricao.slice(0, 95) + '...'
+  }
+}
+
 const FoodList = () => {
   const { id } = useParams()
 
@@ -119,7 +125,7 @@ const FoodList = () => {
               </Action>
             </ImageContainer>
             <h3>{food.nome}</h3>
-            <p>{food.descricao}</p>
+            <p>{getDescricao(food.descricao)}</p>
             <button>Adicionar ao carrinho</button>
           </Card>
         ))}
