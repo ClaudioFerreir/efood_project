@@ -13,7 +13,8 @@ import {
   CloseTag,
   FoodImg,
   Description,
-  ImageThumbNail
+  ImageThumbNail,
+  CardCover
 } from './styles'
 
 import { Cardapio, Restaurant } from '../../Pages/Home'
@@ -103,7 +104,7 @@ const FoodList = () => {
       <ListContainer className="container">
         {cardapio.map((food, index) => (
           <Card key={food.id}>
-            <ImageContainer
+            <CardCover
               onClick={() => {
                 setModal({
                   title: food.nome,
@@ -114,18 +115,20 @@ const FoodList = () => {
                 })
               }}
             >
-              <div>
-                <ImageThumbNail
-                  src={food.foto}
-                  alt={`Imagem ${index + 1} da comida ${food.nome}`}
-                />
-              </div>
-              <Action>
-                <img src={zoom} alt="Clique aqui para mais detalhes" />
-              </Action>
-            </ImageContainer>
-            <h3>{food.nome}</h3>
-            <p>{getDescricao(food.descricao)}</p>
+              <ImageContainer>
+                <div>
+                  <ImageThumbNail
+                    src={food.foto}
+                    alt={`Imagem ${index + 1} da comida ${food.nome}`}
+                  />
+                </div>
+                <Action>
+                  <img src={zoom} alt="Clique aqui para mais detalhes" />
+                </Action>
+              </ImageContainer>
+              <h3>{food.nome}</h3>
+              <p>{getDescricao(food.descricao)}</p>
+            </CardCover>
             <button>Adicionar ao carrinho</button>
           </Card>
         ))}

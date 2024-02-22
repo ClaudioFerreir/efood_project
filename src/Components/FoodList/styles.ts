@@ -1,13 +1,6 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
 
-export const ListContainer = styled.ul`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  row-gap: 32px;
-  column-gap: 32px;
-  padding-top: 56px;
-`
+import { cores } from '../../styles'
 
 //Hero banner
 
@@ -52,6 +45,17 @@ export const Title = styled.div`
     font-weight: 900;
   }
 `
+
+//FoodList
+
+export const ListContainer = styled.ul`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 32px;
+  column-gap: 32px;
+  padding-top: 56px;
+`
+
 //FoodCard
 
 export const Card = styled.li`
@@ -64,9 +68,10 @@ export const Card = styled.li`
   padding: 8px;
   justify-content: space-between;
 
-  h2 {
+  h3 {
     font-size: 16px;
     font-weight: 900;
+    margin-bottom: 8px;
   }
 
   p {
@@ -86,8 +91,13 @@ export const Card = styled.li`
   }
 `
 
+export const CardCover = styled.div`
+  cursor: pointer;
+`
+
 export const ImageContainer = styled.div`
   position: relative;
+  margin-bottom: 8px;
 `
 
 export const ImageThumbNail = styled.img`
