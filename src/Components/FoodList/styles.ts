@@ -185,4 +185,8 @@ export const Description = styled.div`
     line-height: 22px;
     margin-bottom: 16px;
   }
+
+  button {
+    margin-top: 16px;
+  }
 `

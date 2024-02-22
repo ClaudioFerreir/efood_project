@@ -28,6 +28,7 @@ type ModalState = {
   isVisible: boolean
   url: string
   details: string
+  portion: string
   price: number
 }
 
@@ -52,6 +53,7 @@ const FoodList = () => {
     isVisible: false,
     url: '',
     details: '',
+    portion: '',
     price: 0
   })
 
@@ -61,6 +63,7 @@ const FoodList = () => {
       isVisible: false,
       url: '',
       details: '',
+      portion: '',
       price: 0
     })
   }
@@ -89,7 +92,7 @@ const FoodList = () => {
           setCardapio(restaurant.cardapio)
         }
       })
-  })
+  }, [id])
 
   return (
     <>
@@ -111,6 +114,7 @@ const FoodList = () => {
                   isVisible: true,
                   url: food.foto,
                   details: food.descricao,
+                  portion: food.porcao,
                   price: food.preco
                 })
               }}
@@ -143,7 +147,8 @@ const FoodList = () => {
           <FoodImg src={modal.url} alt="imagem da comida" />
           <Description>
             <h4>{modal.title}</h4>
-            {modal.details}
+            <p>{modal.details}</p>
+            <p>Serve: de {modal.portion}</p>
             <Button title="adicionar ao carrinho">
               {`Adicionar ao carrinho - ${formataPreco(modal.price)}`}
             </Button>
