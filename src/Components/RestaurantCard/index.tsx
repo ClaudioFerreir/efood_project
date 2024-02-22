@@ -1,12 +1,11 @@
-import { Link } from 'react-router-dom'
-
 import Tag from '../Tag'
 import {
   Card,
+  ImageContainer,
   Rate,
   RestaurantDescription,
   RestaurantHeader,
-  RestaurantInfo,
+  RestaurantLink,
   RestaurantTag
 } from './styles'
 
@@ -35,21 +34,21 @@ const RestaurantCard = ({
 }: Props) => (
   <div>
     <Card>
-      <img src={image} alt="" />
-      <RestaurantTag>
-        {favorite && <Tag key={id}>Destaque da Semana</Tag>}
-        <Tag key={tag}>{tag}</Tag>
-      </RestaurantTag>
-      <RestaurantInfo>
-        <RestaurantHeader>
-          <h3>{title}</h3>
-          <Rate>
-            {rate} <img src={starImg} alt="star rate" />
-          </Rate>
-        </RestaurantHeader>
-        <RestaurantDescription>{description}</RestaurantDescription>
-        <Link to={to as string}>Saiba mais</Link>
-      </RestaurantInfo>
+      <ImageContainer>
+        <img src={image} alt="imagem do restaurante" />
+        <RestaurantTag>
+          {favorite && <Tag key={id}>Destaque da Semana</Tag>}
+          <Tag key={tag}>{tag}</Tag>
+        </RestaurantTag>
+      </ImageContainer>
+      <RestaurantHeader>
+        <h3>{title}</h3>
+        <Rate>
+          {rate} <img src={starImg} alt="star rate" />
+        </Rate>
+      </RestaurantHeader>
+      <RestaurantDescription>{description}</RestaurantDescription>
+      <RestaurantLink to={to as string}>Saiba mais</RestaurantLink>
     </Card>
   </div>
 )
