@@ -1,9 +1,9 @@
-import { useGetFeaturedRestaurantsQuery } from '../../services/api'
+import { useGetRestaurantsQuery } from '../../services/api'
 
 import HeaderHome from '../../Components/HeaderHome'
 import RestaurantsList from '../../Components/RestaurantsList'
 
-export type Cardapio = {
+export type CardapioItem = {
   foto: string
   preco: number
   id: number
@@ -20,11 +20,11 @@ export type Restaurant = {
   avaliacao: number
   descricao: string
   capa: string
-  cardapios: Cardapio[]
+  cardapio: CardapioItem[]
 }
 
 const Home = () => {
-  const { data: restaurants } = useGetFeaturedRestaurantsQuery()
+  const { data: restaurants } = useGetRestaurantsQuery()
 
   if (!restaurants) {
     return <h3>Carregando...</h3>
