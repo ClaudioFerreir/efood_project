@@ -18,6 +18,7 @@ import zoom from '../../assets/icons/zoom.png'
 import Button from '../Button'
 import fechar from '../../assets/icons/fechar.png'
 import { CardapioItem } from '../../Pages/Home'
+import { ButtonContainer } from '../Button/styles'
 
 type ModalState = {
   title: string
@@ -97,7 +98,9 @@ const FoodCard = ({ items }: Food) => {
               <h3>{food.nome}</h3>
               <p>{getDescricao(food.descricao)}</p>
             </CardCover>
-            <button>Adicionar ao carrinho</button>
+            <ButtonContainer title="clique aqui para adicionar no carrinho">
+              Adicionar ao carrinho
+            </ButtonContainer>
           </Card>
         ))}
       </ListContainer>
