@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { cores } from '../../styles'
 
 import deleteItem from '../../assets/icons/lixeira-de-reciclagem.png'
+import { ButtonContainer } from '../Button/styles'
 
 export const CartContainer = styled.div`
   position: fixed;
@@ -28,6 +29,11 @@ export const Sidebar = styled.aside`
   width: 360px;
   z-index: 1;
   padding: 32px 8px 0 8px;
+
+  ${ButtonContainer} {
+    max-width: 100%;
+    width: 100%;
+  }
 `
 export const CartItem = styled.li`
   background-color: ${cores.ligthYellow};
@@ -36,10 +42,22 @@ export const CartItem = styled.li`
   position: relative;
   display: flex;
 
+  h3 {
+    font-size: 18px;
+    font-weight: 900;
+    margin-bottom: 16px;
+  }
+
+  p {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
   img {
     width: 80px;
     height: 80px;
     object-fit: cover;
+    margin-right: 8px;
   }
 
   button {
@@ -55,11 +73,15 @@ export const CartItem = styled.li`
 `
 export const CartItemContent = styled.div`
   display: inline-block;
+  font-size: 14px;
+  font-weight: 700;
 `
 
 export const Price = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-top: 40px;
+  margin-bottom: 16px;
 
   p {
     color: ${cores.ligthYellow};
