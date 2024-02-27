@@ -11,9 +11,13 @@ export const CartContainer = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  display: flex;
+  display: none;
   justify-content: flex-end;
   z-index: 1;
+
+  &.is-open {
+    display: flex;
+  }
 `
 export const Overlay = styled.div`
   position: absolute;
@@ -82,8 +86,5 @@ export const Price = styled.div`
   justify-content: space-between;
   margin-top: 40px;
   margin-bottom: 16px;
-
-  p {
-    color: ${cores.ligthYellow};
-  }
+  color: ${cores.ligthYellow};
 `

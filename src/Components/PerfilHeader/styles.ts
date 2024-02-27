@@ -27,3 +27,8 @@ export const HeaderContent = styled.nav`
     justify-self: center;
   }
 `
+
+export const CartButton = styled.a`
+  display: flex;
+  justify-self: flex-end;
+`

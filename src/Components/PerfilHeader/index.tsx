@@ -1,19 +1,31 @@
-import { Header, HeaderContent } from './styles'
+import { CartButton, Header, HeaderContent } from './styles'
 
 import bannerImg from '../../assets/images/Vector.svg'
-import logo from '../../assets/images/logo.svg'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 
-const PerfilHeader = () => (
-  <Header style={{ backgroundImage: `url(${bannerImg})` }}>
-    <HeaderContent className="container">
-      <Link to="/">Restaurantes</Link>
-      <img src={logo} alt="efood logo" />
-      <p>
-        <span>0</span>&nbsp; produto(s) no carrinho
-      </p>
-    </HeaderContent>
-  </Header>
-)
+import { open } from '../../store/reducers/cart'
+
+import logo from '../../assets/images/logo.svg'
+
+const PerfilHeader = () => {
+  const dispatch = useDispatch()
+
+  const openCart = () => {
+    dispatch(open())
+  }
+
+  return (
+    <Header style={{ backgroundImage: `url(${bannerImg})` }}>
+      <HeaderContent className="container">
+        <Link to="/">Restaurantes</Link>
+        <img src={logo} alt="efood logo" />
+        <CartButton onClick={openCart}>
+          <span>0</span>&nbsp; produto(s) no carrinho
+        </CartButton>
+      </HeaderContent>
+    </Header>
+  )
+}
 
 export default PerfilHeader
