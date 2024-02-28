@@ -1,10 +1,10 @@
-import FoodList from '../../Components/FoodList'
+import PerfilHero from '../../Components/PerfilHero'
 import PerfilHeader from '../../Components/PerfilHeader'
 
 const Perfil = () => (
   <>
     <PerfilHeader />
-    <FoodList />
+    <PerfilHero />
   </>
 )
 

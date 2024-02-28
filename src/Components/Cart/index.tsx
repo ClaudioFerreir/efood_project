@@ -1,10 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux'
 
-import { close } from '../../store/reducers/cart'
+import { close, remove } from '../../store/reducers/cart'
 
 import { RootReducer } from '../../store'
 
-import pizza from '../../assets/images/image3.png'
 import Button from '../Button'
 
 import {
@@ -16,8 +15,10 @@ import {
   Sidebar
 } from './styles'
 
+import { formataPreco } from '../FoodCard'
+
 const Cart = () => {
-  const { isOpen } = useSelector((state: RootReducer) => state.cart)
+  const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
 
   const dispatch = useDispatch()
 
@@ -25,31 +26,35 @@ const Cart = () => {
     dispatch(close())
   }
 
+  const getTotalPrice = () => {
+    return items.reduce((acc, item) => {
+      return (acc += item.preco!)
+    }, 0)
+  }
+
+  const removeItem = (id: number) => {
+    dispatch(remove(id))
+  }
+
   return (
     <CartContainer className={isOpen ? 'is-open' : ''}>
       <Overlay onClick={closeCart} />
       <Sidebar>
         <ul>
-          <CartItem>
-            <img src={pizza} />
-            <CartItemContent>
-              <h3>Pizza Marguerita</h3>
-              <p>R$ 60,90</p>
-            </CartItemContent>
-            <button type="button" />
-          </CartItem>
-          <CartItem>
-            <img src={pizza} />
-            <CartItemContent>
-              <h3>Pizza Marguerita</h3>
-              <p>R$ 60,90</p>
-            </CartItemContent>
-            <button type="button" />
-          </CartItem>
+          {items.map((item) => (
+            <CartItem key={item.id}>
+              <img src={item.foto} />
+              <CartItemContent>
+                <h3>{item.nome}</h3>
+                <p>{formataPreco(item.preco)}</p>
+              </CartItemContent>
+              <button type="button" onClick={() => removeItem(item.id)} />
+            </CartItem>
+          ))}
         </ul>
         <Price>
           <p>Valor total</p>
-          <span>R$ 182,70</span>
+          <span>{formataPreco(getTotalPrice())}</span>
         </Price>
         <Button title="siga para a entrega">Continuar com a entrega</Button>
       </Sidebar>

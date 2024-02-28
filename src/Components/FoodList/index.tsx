@@ -1,30 +1,19 @@
-import { useParams } from 'react-router-dom'
+import { ListContainer } from './styles'
 
-import { Banner, Title } from './styles'
-import { useGetRestaurantIdQuery } from '../../services/api'
+import { CardapioItem } from '../../Pages/Home'
 import FoodCard from '../FoodCard'
 
-const FoodList = () => {
-  const { id } = useParams()
+type Props = {
+  items: CardapioItem[]
+}
 
-  const { data: restaurantInfo } = useGetRestaurantIdQuery(id!)
-
-  if (!restaurantInfo) {
-    return <h3>Carregando...</h3>
-  }
-
+const FoodList = ({ items }: Props) => {
   return (
-    <>
-      <Banner style={{ backgroundImage: `url(${restaurantInfo.capa})` }}>
-        <Title className="container">
-          <p>
-            <span>{restaurantInfo.tipo}</span>
-          </p>
-          <h2>{restaurantInfo.titulo}</h2>
-        </Title>
-      </Banner>
-      <FoodCard items={restaurantInfo.cardapio} />
-    </>
+    <ListContainer className="container">
+      {items.map((food) => (
+        <FoodCard item={food} key={food.id} />
+      ))}
+    </ListContainer>
   )
 }
 
