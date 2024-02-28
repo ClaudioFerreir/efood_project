@@ -1,11 +1,10 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 export const Card = styled.li`
   display: flex;
   flex-direction: column;
   height: 338px;
-  width: 320px;
   background-color: ${cores.salmon};
   color: ${cores.ligthYellow};
   padding: 8px;
@@ -74,6 +73,7 @@ export const Modal = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  max-width: 100%;
   width: 100%;
   height: 100%;
   justify-content: center;
@@ -102,6 +102,18 @@ export const ModalContainer = styled.div`
   padding: 32px;
   z-index: 1;
   position: relative;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    width: 88%;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    overflow-y: auto;
+    width: 90%;
+  }
 `
 
 export const CloseTag = styled.img`
@@ -114,6 +126,12 @@ export const FoodImg = styled.img`
   margin-right: 24px;
   max-width: 280px;
   object-fit: cover;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    margin-right: 0;
+    margin-bottom: 24px;
+    max-width: 100%;
+  }
 `
 
 export const Description = styled.div`
