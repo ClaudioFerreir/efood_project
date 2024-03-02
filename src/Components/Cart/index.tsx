@@ -1,30 +1,21 @@
 import { useDispatch, useSelector } from 'react-redux'
 
-import { close, remove } from '../../store/reducers/cart'
+import { remove } from '../../store/reducers/cart'
 
 import { RootReducer } from '../../store'
 
 import Button from '../Button'
 
-import {
-  CartContainer,
-  CartItem,
-  CartItemContent,
-  Overlay,
-  Price,
-  Sidebar
-} from './styles'
+import Sidebar from '../Sidebar'
+
+import { CartItem, CartItemContent, Price } from './styles'
 
 import { formataPreco } from '../FoodCard'
 
 const Cart = () => {
-  const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
+  const { items } = useSelector((state: RootReducer) => state.cart)
 
   const dispatch = useDispatch()
-
-  const closeCart = () => {
-    dispatch(close())
-  }
 
   const getTotalPrice = () => {
     return items.reduce((acc, item) => {
@@ -37,9 +28,8 @@ const Cart = () => {
   }
 
   return (
-    <CartContainer className={isOpen ? 'is-open' : ''}>
-      <Overlay onClick={closeCart} />
-      <Sidebar>
+    <Sidebar>
+      <>
         <ul>
           {items.map((item) => (
             <CartItem key={item.id}>
@@ -57,8 +47,8 @@ const Cart = () => {
           <span>{formataPreco(getTotalPrice())}</span>
         </Price>
         <Button title="siga para a entrega">Continuar com a entrega</Button>
-      </Sidebar>
-    </CartContainer>
+      </>
+    </Sidebar>
   )
 }
 
