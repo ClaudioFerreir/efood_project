@@ -3,42 +3,13 @@ import styled from 'styled-components'
 import { cores } from '../../styles'
 
 import deleteItem from '../../assets/icons/lixeira-de-reciclagem.png'
-import { ButtonContainer } from '../Button/styles'
 
 export const CartContainer = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: none;
-  justify-content: flex-end;
-  z-index: 1;
-
-  &.is-open {
-    display: flex;
+  &.is-delivery-open {
+    display: none;
   }
 `
-export const Overlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #000;
-  opacity: 0.8;
-`
-export const Sidebar = styled.aside`
-  background-color: #e66767;
-  width: 360px;
-  z-index: 1;
-  padding: 32px 8px 0 8px;
 
-  ${ButtonContainer} {
-    max-width: 100%;
-    width: 100%;
-  }
-`
 export const CartItem = styled.li`
   background-color: ${cores.ligthYellow};
   margin-bottom: 16px;
@@ -87,4 +58,46 @@ export const Price = styled.div`
   margin-top: 40px;
   margin-bottom: 16px;
   color: ${cores.ligthYellow};
+`
+
+export const DeliveryContainer = styled.div`
+  color: ${cores.ligthYellow};
+
+  h2 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+`
+
+export const InputGroup = styled.div`
+  font-size: 14px;
+  font-weight: 700;
+
+  label {
+    display: block;
+  }
+
+  input {
+    width: 100%;
+    margin: 8px 0;
+    padding: 8px;
+    background-color: ${cores.ligthYellow};
+    border: 1px solid ${cores.ligthYellow};
+    font-weight: 700;
+    font-size: 14px;
+    }
+  }
+`
+
+export const Row = styled.div`
+  display: flex;
+  gap: 16px;
+`
+
+export const ButtonContainer = styled.div`
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 `
