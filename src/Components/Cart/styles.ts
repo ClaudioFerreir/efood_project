@@ -4,6 +4,10 @@ import { cores } from '../../styles'
 
 import deleteItem from '../../assets/icons/lixeira-de-reciclagem.png'
 
+type InputGroupProps = {
+  $maxWidth?: string
+}
+
 export const CartContainer = styled.div`
   &.is-delivery-open {
     display: none;
@@ -60,7 +64,7 @@ export const Price = styled.div`
   color: ${cores.ligthYellow};
 `
 
-export const DeliveryContainer = styled.div`
+export const CheckoutContainer = styled.div`
   color: ${cores.ligthYellow};
 
   h2 {
@@ -70,9 +74,11 @@ export const DeliveryContainer = styled.div`
   }
 `
 
-export const InputGroup = styled.div`
+export const InputGroup = styled.div<InputGroupProps>`
+  flex: auto;
   font-size: 14px;
   font-weight: 700;
+  max-width: ${({ $maxWidth }) => ($maxWidth ? $maxWidth : 'auto')};
 
   label {
     display: block;
@@ -92,7 +98,7 @@ export const InputGroup = styled.div`
 
 export const Row = styled.div`
   display: flex;
-  gap: 16px;
+  gap: 16px 32px;
 `
 
 export const ButtonContainer = styled.div`

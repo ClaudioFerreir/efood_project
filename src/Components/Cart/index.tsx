@@ -14,7 +14,7 @@ import {
   CartContainer,
   CartItem,
   CartItemContent,
-  DeliveryContainer,
+  CheckoutContainer,
   InputGroup,
   Price,
   Row
@@ -27,28 +27,15 @@ const Cart = () => {
   const [currentScreen, setCurrrentScreen] = useState('cart')
 
   const handleNextScreen = () => {
-    switch (currentScreen) {
-      case 'cart':
-        setCurrrentScreen('delivery')
-        break
-      case 'delivery':
-        setCurrrentScreen('payment')
-        break
-      case 'payment':
-        setCurrrentScreen('confirmation')
-        break
-    }
+    currentScreen === 'cart'
+      ? setCurrrentScreen('delivery')
+      : setCurrrentScreen('payment')
   }
 
   const handlePreviousScreen = () => {
-    switch (currentScreen) {
-      case 'delivery':
-        setCurrrentScreen('cart')
-        break
-      case 'payment':
-        setCurrrentScreen('delivery')
-        break
-    }
+    currentScreen === 'delivery'
+      ? setCurrrentScreen('cart')
+      : setCurrrentScreen('delivery')
   }
 
   const dispatch = useDispatch()
@@ -92,26 +79,32 @@ const Cart = () => {
             Continuar com a entrega
           </Button>
         </CartContainer>
-        <DeliveryContainer
+        <CheckoutContainer
           style={{ display: currentScreen === 'delivery' ? 'block' : 'none' }}
         >
           <h2>Entrega</h2>
-          <InputGroup>
-            <label htmlFor="receiver">Quem irá receber</label>
-            <input type="text" id="receiver" name="receiver" />
-          </InputGroup>
-          <InputGroup>
-            <label htmlFor="addressDescription">Endereço</label>
-            <input
-              type="text"
-              id="addressDescription"
-              name="addressDescription"
-            />
-          </InputGroup>
-          <InputGroup>
-            <label htmlFor="addressCity">Cidade</label>
-            <input type="text" id="addressCity" name="addressCity" />
-          </InputGroup>
+          <Row>
+            <InputGroup>
+              <label htmlFor="receiver">Quem irá receber</label>
+              <input type="text" id="receiver" name="receiver" />
+            </InputGroup>
+          </Row>
+          <Row>
+            <InputGroup>
+              <label htmlFor="addressDescription">Endereço</label>
+              <input
+                type="text"
+                id="addressDescription"
+                name="addressDescription"
+              />
+            </InputGroup>
+          </Row>
+          <Row>
+            <InputGroup>
+              <label htmlFor="addressCity">Cidade</label>
+              <input type="text" id="addressCity" name="addressCity" />
+            </InputGroup>
+          </Row>
           <Row>
             <InputGroup>
               <label htmlFor="addressZipCode">CEP</label>
@@ -122,14 +115,16 @@ const Cart = () => {
               <input type="text" id="addressNumber" name="addressNumber" />
             </InputGroup>
           </Row>
-          <InputGroup>
-            <label htmlFor="addressComplement">Complemento (opcional)</label>
-            <input
-              type="text"
-              id="addressComplement"
-              name="addressComplement"
-            />
-          </InputGroup>
+          <Row>
+            <InputGroup>
+              <label htmlFor="addressComplement">Complemento (opcional)</label>
+              <input
+                type="text"
+                id="addressComplement"
+                name="addressComplement"
+              />
+            </InputGroup>
+          </Row>
           <ButtonContainer>
             <Button
               title="Continuar com o pagamento"
@@ -144,7 +139,59 @@ const Cart = () => {
               Voltar para o carrinho
             </Button>
           </ButtonContainer>
-        </DeliveryContainer>
+        </CheckoutContainer>
+        <CheckoutContainer
+          style={{ display: currentScreen === 'payment' ? 'block' : 'none' }}
+        >
+          <h2>Pagamento - Valor a pagar R$ 190,90</h2>
+          <Row>
+            <InputGroup>
+              <label htmlFor="paymentCardName">Nome no cartão</label>
+              <input type="text" id="paymentCardName" name="paymentCardName" />
+            </InputGroup>
+          </Row>
+          <Row>
+            <InputGroup>
+              <label htmlFor="paymentCardNumber">Número do cartão</label>
+              <input
+                type="text"
+                id="paymentCardNumber"
+                name="paymentCardNumber"
+              />
+            </InputGroup>
+            <InputGroup $maxWidth="87px">
+              <label htmlFor="paymentCardCode">CVV</label>
+              <input type="text" id="paymentCardCode" name="paymentCardCode" />
+            </InputGroup>
+          </Row>
+          <Row>
+            <InputGroup>
+              <label htmlFor="paymentCardExpiresMonth">Mês de vencimento</label>
+              <input
+                type="text"
+                id="paymentCardExpiresMonth"
+                name="paymentCardExpiresMonth"
+              />
+            </InputGroup>
+            <InputGroup>
+              <label htmlFor="paymentCardExpiresYear">Ano de vencimento</label>
+              <input
+                type="text"
+                id="paymentCardExpiresYear"
+                name="paymentCardExpiresYear"
+              />
+            </InputGroup>
+          </Row>
+          <ButtonContainer>
+            <Button title="Finalizar o pagamento">Finalizar pagamento</Button>
+            <Button
+              title="Voltar para edição de endereço"
+              onClick={() => handlePreviousScreen()}
+            >
+              Voltar para a edição de endereço
+            </Button>
+          </ButtonContainer>
+        </CheckoutContainer>
       </>
     </Sidebar>
   )
