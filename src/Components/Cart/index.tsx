@@ -65,7 +65,7 @@ const Cart = () => {
       addressCity: Yup.string().required('O campo é obrigatório'),
       addressZipCode: Yup.string().required('O campo é obrigatório'),
       addressNumber: Yup.string().required('O campo é obrigatório'),
-      addressComplement: Yup.string().required('O campo é obrigatório'),
+      addressComplement: Yup.string(),
       paymentCardName: Yup.string().required('O campo é obrigatório'),
       paymentCardNumber: Yup.string().required('O campo é obrigatório'),
       paymentCardCode: Yup.string().required('O campo é obrigatório'),
@@ -77,7 +77,13 @@ const Cart = () => {
     }
   })
 
-  console.log(form)
+  const getErrorMessage = (fieldName: string, message?: string) => {
+    const isTouched = fieldName in form.touched
+    const isInvalid = fieldName in form.errors
+
+    if (isTouched && isInvalid) return message
+    return ''
+  }
 
   return (
     <Sidebar>
@@ -132,6 +138,9 @@ const Cart = () => {
                       onChange={form.handleChange}
                       onBlur={form.handleBlur}
                     />
+                    <small>
+                      {getErrorMessage('receiver', form.errors.receiver)}
+                    </small>
                   </InputGroup>
                 </Row>
                 <Row>
@@ -145,6 +154,12 @@ const Cart = () => {
                       onChange={form.handleChange}
                       onBlur={form.handleBlur}
                     />
+                    <small>
+                      {getErrorMessage(
+                        'addressDescription',
+                        form.errors.addressDescription
+                      )}
+                    </small>
                   </InputGroup>
                 </Row>
                 <Row>
@@ -158,6 +173,9 @@ const Cart = () => {
                       onChange={form.handleChange}
                       onBlur={form.handleBlur}
                     />
+                    <small>
+                      {getErrorMessage('addressCity', form.errors.addressCity)}
+                    </small>
                   </InputGroup>
                 </Row>
                 <Row>
@@ -171,6 +189,12 @@ const Cart = () => {
                       onChange={form.handleChange}
                       onBlur={form.handleBlur}
                     />
+                    <small>
+                      {getErrorMessage(
+                        'addressZipCode',
+                        form.errors.addressZipCode
+                      )}
+                    </small>
                   </InputGroup>
                   <InputGroup>
                     <label htmlFor="addressNumber">Número</label>
@@ -182,6 +206,12 @@ const Cart = () => {
                       onChange={form.handleChange}
                       onBlur={form.handleBlur}
                     />
+                    <small>
+                      {getErrorMessage(
+                        'addressNumber',
+                        form.errors.addressNumber
+                      )}
+                    </small>
                   </InputGroup>
                 </Row>
                 <Row>
@@ -197,6 +227,12 @@ const Cart = () => {
                       onChange={form.handleChange}
                       onBlur={form.handleBlur}
                     />
+                    <small>
+                      {getErrorMessage(
+                        'addressComplement',
+                        form.errors.addressComplement
+                      )}
+                    </small>
                   </InputGroup>
                 </Row>
                 <ButtonContainer>
@@ -233,6 +269,12 @@ const Cart = () => {
                       onChange={form.handleChange}
                       onBlur={form.handleBlur}
                     />
+                    <small>
+                      {getErrorMessage(
+                        'paymentCardName',
+                        form.errors.paymentCardName
+                      )}
+                    </small>
                   </InputGroup>
                 </Row>
                 <Row>
@@ -246,6 +288,12 @@ const Cart = () => {
                       onChange={form.handleChange}
                       onBlur={form.handleBlur}
                     />
+                    <small>
+                      {getErrorMessage(
+                        'paymentCardNumber',
+                        form.errors.paymentCardNumber
+                      )}
+                    </small>
                   </InputGroup>
                   <InputGroup $maxWidth="87px">
                     <label htmlFor="paymentCardCode">CVV</label>
@@ -257,6 +305,12 @@ const Cart = () => {
                       onChange={form.handleChange}
                       onBlur={form.handleBlur}
                     />
+                    <small>
+                      {getErrorMessage(
+                        'paymentCardCode',
+                        form.errors.paymentCardCode
+                      )}
+                    </small>
                   </InputGroup>
                 </Row>
                 <Row>
@@ -272,6 +326,12 @@ const Cart = () => {
                       onChange={form.handleChange}
                       onBlur={form.handleBlur}
                     />
+                    <small>
+                      {getErrorMessage(
+                        'paymentCardExpiresMonth',
+                        form.errors.paymentCardExpiresMonth
+                      )}
+                    </small>
                   </InputGroup>
                   <InputGroup>
                     <label htmlFor="paymentCardExpiresYear">
@@ -285,6 +345,12 @@ const Cart = () => {
                       onChange={form.handleChange}
                       onBlur={form.handleBlur}
                     />
+                    <small>
+                      {getErrorMessage(
+                        'paymentCardExpiresYear',
+                        form.errors.paymentCardExpiresYear
+                      )}
+                    </small>
                   </InputGroup>
                 </Row>
                 <ButtonContainer>

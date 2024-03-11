@@ -94,6 +94,11 @@ export const InputGroup = styled.div<InputGroupProps>`
     font-size: 14px;
     }
   }
+
+  small {
+    display: block;
+    margin-bottom: 16px;
+  }
 `
 
 export const Row = styled.div`
