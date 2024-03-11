@@ -85,6 +85,21 @@ const Cart = () => {
     return ''
   }
 
+  const FormDeliveryValid = () => {
+    return (
+      !form.errors.receiver &&
+      form.touched.receiver &&
+      !form.errors.addressDescription &&
+      form.touched.addressDescription &&
+      !form.errors.addressCity &&
+      form.touched.addressCity &&
+      !form.errors.addressZipCode &&
+      form.touched.addressZipCode &&
+      !form.errors.addressNumber &&
+      form.touched.addressNumber
+    )
+  }
+
   return (
     <Sidebar>
       <>
@@ -238,7 +253,11 @@ const Cart = () => {
                 <ButtonContainer>
                   <Button
                     title="Continuar com o pagamento"
-                    onClick={() => setCurrrentScreen('payment')}
+                    onClick={
+                      FormDeliveryValid()
+                        ? () => setCurrrentScreen('payment')
+                        : undefined
+                    }
                   >
                     Continuar com o pagamento
                   </Button>
