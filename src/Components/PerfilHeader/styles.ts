@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 export const Header = styled.header`
   height: 186px;
@@ -33,7 +33,7 @@ export const HomeLink = styled(Link)`
   display: flex;
   cursor: pointer;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${breakpoints.tablet}) {
     display: none;
   }
 `
@@ -42,7 +42,7 @@ export const LinkMobile = styled(Link)`
   display: none;
   cursor: pointer;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${breakpoints.tablet}) {
     display: flex;
   }
 `
@@ -52,7 +52,7 @@ export const CartButton = styled.a`
   justify-self: flex-end;
   cursor: pointer;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${breakpoints.tablet}) {
     display: none;
   }
 `
@@ -67,7 +67,7 @@ export const CartMobile = styled.a`
     margin-right: 8px;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: ${breakpoints.tablet}) {
     display: flex;
   }
 `
