@@ -7,9 +7,9 @@ import { remove } from '../../store/reducers/cart'
 
 import { RootReducer } from '../../store'
 
-import Button from '../Button'
+import Button from '../../Components/Button'
 
-import Sidebar from '../Sidebar'
+import Sidebar from '../../Components/Sidebar'
 
 import {
   ButtonContainer,
@@ -22,7 +22,9 @@ import {
   Row
 } from './styles'
 
-import { formataPreco } from '../FoodCard'
+import { formataPreco } from '../../Components/FoodCard'
+
+import { usePurchaseMutation } from '../../services/api'
 
 type currentScreenState = 'cart' | 'delivery' | 'payment'
 
@@ -30,6 +32,8 @@ const Cart = () => {
   const { items } = useSelector((state: RootReducer) => state.cart)
   const [currentScreen, setCurrrentScreen] =
     useState<currentScreenState>('cart')
+
+  const [purchase, { isLoading, isError, data }] = usePurchaseMutation()
 
   const dispatch = useDispatch()
 
@@ -73,7 +77,35 @@ const Cart = () => {
       paymentCardExpiresYear: Yup.string().required('O campo é obrigatório')
     }),
     onSubmit: (values) => {
-      console.log(values)
+      purchase({
+        delivery: {
+          receiver: values.receiver,
+          address: {
+            description: values.addressDescription,
+            city: values.addressCity,
+            zipCode: values.addressZipCode,
+            number: Number(values.addressNumber),
+            complement: values.addressComplement
+          }
+        },
+        payment: {
+          card: {
+            name: values.paymentCardName,
+            number: values.paymentCardNumber,
+            code: Number(values.paymentCardCode),
+            expires: {
+              month: Number(values.paymentCardExpiresMonth),
+              year: Number(values.paymentCardExpiresYear)
+            }
+          }
+        },
+        products: [
+          {
+            id: 1,
+            price: 10
+          }
+        ]
+      })
     }
   })
 

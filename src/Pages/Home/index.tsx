@@ -2,6 +2,7 @@ import { useGetRestaurantsQuery } from '../../services/api'
 
 import HeaderHome from '../../Components/HeaderHome'
 import RestaurantsList from '../../Components/RestaurantsList'
+import Footer from '../../Components/Footer'
 
 export type CardapioItem = {
   foto: string
@@ -34,6 +35,7 @@ const Home = () => {
     <>
       <HeaderHome />
       <RestaurantsList restaurants={restaurants} />
+      <Footer />
     </>
   )
 }
