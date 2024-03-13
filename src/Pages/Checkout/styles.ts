@@ -72,6 +72,10 @@ export const CheckoutContainer = styled.div`
     font-weight: 700;
     margin-bottom: 16px;
   }
+
+  .margin-bottom {
+    margin-bottom: 24px;
+  }
 `
 
 export const InputGroup = styled.div<InputGroupProps>`
