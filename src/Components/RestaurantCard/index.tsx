@@ -1,4 +1,7 @@
 import Tag from '../Tag'
+
+import starImg from '../../assets/icons/star.png'
+
 import {
   Card,
   ImageContainer,
@@ -8,8 +11,6 @@ import {
   RestaurantLink,
   RestaurantTag
 } from './styles'
-
-import starImg from '../../assets/icons/star.png'
 
 type Props = {
   id: number
@@ -48,7 +49,12 @@ const RestaurantCard = ({
         </Rate>
       </RestaurantHeader>
       <RestaurantDescription>{description}</RestaurantDescription>
-      <RestaurantLink to={to as string}>Saiba mais</RestaurantLink>
+      <RestaurantLink
+        title="Clique para conhecer os pratos do restaurante"
+        to={to as string}
+      >
+        Saiba mais
+      </RestaurantLink>
     </Card>
   </div>
 )

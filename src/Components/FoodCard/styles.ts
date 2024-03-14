@@ -40,13 +40,13 @@ export const CardCover = styled.div`
 export const ImageContainer = styled.div`
   position: relative;
   margin-bottom: 8px;
+  cursor: zoom-in;
 `
 
 export const ImageThumbNail = styled.img`
   width: 100%;
   height: 167px;
   object-fit: cover;
-  cursor: pointer;
 `
 
 export const Action = styled.div`

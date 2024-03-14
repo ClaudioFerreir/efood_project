@@ -1,8 +1,10 @@
 import { useParams } from 'react-router-dom'
 
-import { Banner, Title } from './styles'
-import { useGetRestaurantIdQuery } from '../../services/api'
 import FoodCard from '../FoodList'
+
+import { useGetRestaurantIdQuery } from '../../services/api'
+
+import { Banner, Title } from './styles'
 
 const PerfilHero = () => {
   const { id } = useParams()

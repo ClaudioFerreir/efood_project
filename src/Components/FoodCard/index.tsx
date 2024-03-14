@@ -1,7 +1,15 @@
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+
+import { add, open } from '../../store/reducers/cart'
+
+import Button from '../Button'
+import { CardapioItem } from '../../Pages/Home'
+
+import zoom from '../../assets/icons/zoom.png'
+import fechar from '../../assets/icons/fechar.png'
 
 import { ButtonContainer } from '../Button/styles'
-
 import {
   Action,
   Card,
@@ -14,13 +22,6 @@ import {
   Modal,
   ModalContainer
 } from './styles'
-import { CardapioItem } from '../../Pages/Home'
-import Button from '../Button'
-
-import zoom from '../../assets/icons/zoom.png'
-import fechar from '../../assets/icons/fechar.png'
-import { useDispatch } from 'react-redux'
-import { add, open } from '../../store/reducers/cart'
 
 type ModalState = {
   title: string
@@ -78,7 +79,10 @@ const FoodCard = ({ item }: Props) => {
 
   return (
     <>
-      <Card key={item.id}>
+      <Card
+        title={`Clique para mais detalhes do prato: ${item.nome}`}
+        key={item.id}
+      >
         <CardCover
           onClick={() => {
             setModal({

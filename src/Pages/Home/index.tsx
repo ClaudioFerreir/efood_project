@@ -1,8 +1,8 @@
-import { useGetRestaurantsQuery } from '../../services/api'
-
 import HeaderHome from '../../Components/HeaderHome'
 import RestaurantsList from '../../Components/RestaurantsList'
 import Footer from '../../Components/Footer'
+
+import { useGetRestaurantsQuery } from '../../services/api'
 
 export type CardapioItem = {
   foto: string

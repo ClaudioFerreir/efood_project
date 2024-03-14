@@ -1,7 +1,7 @@
 import logo from '../../assets/images/logo.svg'
-import { Imagem, Titulo } from './styles'
-
 import bannerImg from '../../assets/images/Vector.svg'
+
+import { Imagem, Titulo } from './styles'
 
 const HeaderHome = () => (
   <Imagem style={{ backgroundImage: `url(${bannerImg})` }}>

@@ -5,11 +5,12 @@ import * as Yup from 'yup'
 
 import { remove } from '../../store/reducers/cart'
 
-import { RootReducer } from '../../store'
-
 import Button from '../../Components/Button'
-
 import Sidebar from '../../Components/Sidebar'
+import { formataPreco } from '../../Components/FoodCard'
+
+import { usePurchaseMutation } from '../../services/api'
+import { RootReducer } from '../../store'
 
 import {
   ButtonContainer,
@@ -22,10 +23,6 @@ import {
   Row
 } from './styles'
 
-import { formataPreco } from '../../Components/FoodCard'
-
-import { usePurchaseMutation } from '../../services/api'
-
 type currentScreenState = 'cart' | 'delivery' | 'payment'
 
 const Cart = () => {
@@ -33,8 +30,7 @@ const Cart = () => {
   const [currentScreen, setCurrrentScreen] =
     useState<currentScreenState>('cart')
 
-  const [purchase, { isLoading, isError, data, isSuccess }] =
-    usePurchaseMutation()
+  const [purchase, { data, isSuccess }] = usePurchaseMutation()
 
   const dispatch = useDispatch()
 
