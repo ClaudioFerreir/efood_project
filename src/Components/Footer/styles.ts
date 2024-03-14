@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import { breakpoints, cores } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
 export const FooterMainContainer = styled.footer`
-  background-color: ${cores.ligthYellow};
+  background-color: ${colors.ligthYellow};
   height: 298px;
   padding: 40px 0;
   margin-top: 120px;

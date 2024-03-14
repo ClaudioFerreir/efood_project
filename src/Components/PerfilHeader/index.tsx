@@ -9,14 +9,7 @@ import { MdHome } from 'react-icons/md'
 import bannerImg from '../../assets/images/Vector.svg'
 import logo from '../../assets/images/logo.svg'
 
-import {
-  CartButton,
-  CartMobile,
-  Header,
-  HeaderContent,
-  HomeLink,
-  LinkMobile
-} from './styles'
+import * as S from './styles'
 
 const PerfilHeader = () => {
   const dispatch = useDispatch()
@@ -28,24 +21,24 @@ const PerfilHeader = () => {
   const { items } = useSelector((state: RootReducer) => state.cart)
 
   return (
-    <Header style={{ backgroundImage: `url(${bannerImg})` }}>
-      <HeaderContent className="container">
-        <HomeLink title="Ir para a página de restaurantes" to="/">
+    <S.Header style={{ backgroundImage: `url(${bannerImg})` }}>
+      <S.HeaderContent className="container">
+        <S.HomeLink title="Ir para a página de restaurantes" to="/">
           Restaurantes
-        </HomeLink>
-        <LinkMobile title="Ip para a página de restaurantes" to="/">
+        </S.HomeLink>
+        <S.LinkMobile title="Ip para a página de restaurantes" to="/">
           <MdHome size={32} />
-        </LinkMobile>
+        </S.LinkMobile>
         <img src={logo} alt="efood logo" />
-        <CartButton title="Ir para o carrinho" onClick={openCart}>
+        <S.CartButton title="Ir para o carrinho" onClick={openCart}>
           <span>{items.length}</span>&nbsp; produto(s) no carrinho
-        </CartButton>
-        <CartMobile title="Ir para o carrinho" onClick={openCart}>
+        </S.CartButton>
+        <S.CartMobile title="Ir para o carrinho" onClick={openCart}>
           <span>{items.length}</span>
           <FaShoppingCart size={24} />
-        </CartMobile>
-      </HeaderContent>
-    </Header>
+        </S.CartMobile>
+      </S.HeaderContent>
+    </S.Header>
   )
 }
 

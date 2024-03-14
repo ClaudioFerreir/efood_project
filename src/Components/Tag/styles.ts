@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 
 export const TagContainer = styled.div`
   display: inline-block;
-  background-color: ${cores.salmon};
-  color: ${cores.ligthYellow};
+  background-color: ${colors.salmon};
+  color: ${colors.ligthYellow};
   font-weight: bold;
   font-size: 14px;
   border: none;
@@ -15,8 +15,8 @@ export const TagContainer = styled.div`
 
 export const TagLink = styled(Link)`
   display: inline-block;
-  background-color: ${cores.salmon};
-  color: ${cores.ligthYellow};
+  background-color: ${colors.salmon};
+  color: ${colors.ligthYellow};
   font-weight: bold;
   font-size: 14px;
   border: none;

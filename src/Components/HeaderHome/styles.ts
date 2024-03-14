@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Imagem = styled.header`
+export const Image = styled.header`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -16,7 +16,7 @@ export const Logo = styled.img`
   width: 125px;
 `
 
-export const Titulo = styled.h2`
+export const Title = styled.h2`
   max-width: 539px;
   font-size: 36px;
   font-weight: 900;

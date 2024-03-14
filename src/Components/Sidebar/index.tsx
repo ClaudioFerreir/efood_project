@@ -4,7 +4,7 @@ import { close } from '../../store/reducers/cart'
 
 import { RootReducer } from '../../store'
 
-import { SidebarContainer, Overlay, SidebarContent } from './styles'
+import * as S from './styles'
 
 type Props = {
   children: JSX.Element
@@ -20,10 +20,10 @@ const Sidebar = ({ children }: Props) => {
   }
 
   return (
-    <SidebarContainer className={isOpen ? 'is-open' : ''}>
-      <Overlay onClick={closeCart} />
-      <SidebarContent>{children}</SidebarContent>
-    </SidebarContainer>
+    <S.SidebarContainer className={isOpen ? 'is-open' : ''}>
+      <S.Overlay onClick={closeCart} />
+      <S.SidebarContent>{children}</S.SidebarContent>
+    </S.SidebarContainer>
   )
 }
 

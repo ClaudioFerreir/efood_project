@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 
-export const cores = {
+export const colors = {
   salmon: '#E66767',
   ligthYellow: '#FFEBD9'
 }
@@ -20,7 +20,7 @@ export const GlobalCss = createGlobalStyle`
   }
 
   body {
-    color: ${cores.salmon};
+    color: ${colors.salmon};
   }
 
   .container {

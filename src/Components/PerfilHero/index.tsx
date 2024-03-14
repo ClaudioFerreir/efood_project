@@ -4,7 +4,7 @@ import FoodCard from '../FoodList'
 
 import { useGetRestaurantIdQuery } from '../../services/api'
 
-import { Banner, Title } from './styles'
+import * as S from './styles'
 
 const PerfilHero = () => {
   const { id } = useParams()
@@ -17,14 +17,14 @@ const PerfilHero = () => {
 
   return (
     <>
-      <Banner style={{ backgroundImage: `url(${restaurantInfo.capa})` }}>
-        <Title className="container">
+      <S.Banner style={{ backgroundImage: `url(${restaurantInfo.capa})` }}>
+        <S.Title className="container">
           <p>
             <span>{restaurantInfo.tipo}</span>
           </p>
           <h2>{restaurantInfo.titulo}</h2>
-        </Title>
-      </Banner>
+        </S.Title>
+      </S.Banner>
       <FoodCard items={restaurantInfo.cardapio} />
     </>
   )

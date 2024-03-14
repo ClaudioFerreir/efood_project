@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 
 import deleteItem from '../../assets/icons/lixeira-de-reciclagem.png'
 
@@ -15,7 +15,7 @@ export const CartContainer = styled.div`
 `
 
 export const CartItem = styled.li`
-  background-color: ${cores.ligthYellow};
+  background-color: ${colors.ligthYellow};
   margin-bottom: 16px;
   padding: 8px 8px 12px 8px;
   position: relative;
@@ -61,11 +61,11 @@ export const Price = styled.div`
   justify-content: space-between;
   margin-top: 40px;
   margin-bottom: 16px;
-  color: ${cores.ligthYellow};
+  color: ${colors.ligthYellow};
 `
 
 export const CheckoutContainer = styled.div`
-  color: ${cores.ligthYellow};
+  color: ${colors.ligthYellow};
 
   h2 {
     font-size: 16px;
@@ -92,8 +92,8 @@ export const InputGroup = styled.div<InputGroupProps>`
     width: 100%;
     margin: 8px 0;
     padding: 8px;
-    background-color: ${cores.ligthYellow};
-    border: 1px solid ${cores.ligthYellow};
+    background-color: ${colors.ligthYellow};
+    border: 1px solid ${colors.ligthYellow};
     font-weight: 700;
     font-size: 14px;
     }

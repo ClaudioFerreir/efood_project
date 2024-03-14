@@ -1,4 +1,4 @@
-import { TagContainer, TagLink } from './styles'
+import * as S from './styles'
 
 type Props = {
   children: string
@@ -11,12 +11,12 @@ type Props = {
 const Tag = ({ children, title, to, useLink, onClick }: Props) => {
   if (useLink) {
     return (
-      <TagLink to={to as string} title={title} onClick={onClick}>
+      <S.TagLink to={to as string} title={title} onClick={onClick}>
         {children}
-      </TagLink>
+      </S.TagLink>
     )
   }
-  return <TagContainer>{children}</TagContainer>
+  return <S.TagContainer>{children}</S.TagContainer>
 }
 
 export default Tag

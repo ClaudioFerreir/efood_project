@@ -1,12 +1,12 @@
 import styled from 'styled-components'
-import { breakpoints, cores } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
 export const Card = styled.li`
   display: flex;
   flex-direction: column;
   height: 338px;
-  background-color: ${cores.salmon};
-  color: ${cores.ligthYellow};
+  background-color: ${colors.salmon};
+  color: ${colors.ligthYellow};
   padding: 8px;
   justify-content: space-between;
 
@@ -23,8 +23,8 @@ export const Card = styled.li`
   }
 
   button {
-    background-color: ${cores.ligthYellow};
-    color: ${cores.salmon};
+    background-color: ${colors.ligthYellow};
+    color: ${colors.salmon};
     border: none;
     font-size: 14px;
     font-weight: 700;
@@ -81,7 +81,7 @@ export const Modal = styled.div`
   z-index: 1;
   display: none;
 
-  &.visible {
+  &.is-visible {
     display: flex;
   }
   .overlay {
@@ -95,9 +95,9 @@ export const Modal = styled.div`
 `
 
 export const ModalContainer = styled.div`
-  background-color: ${cores.salmon};
+  background-color: ${colors.salmon};
   height: 344px;
-  color: ${cores.ligthYellow};
+  color: ${colors.ligthYellow};
   display: flex;
   padding: 32px;
   z-index: 1;

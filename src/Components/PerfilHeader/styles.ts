@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-import { breakpoints, cores } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
 export const Header = styled.header`
   height: 186px;
@@ -16,7 +16,7 @@ export const HeaderContent = styled.nav`
   font-size: 18px;
 
   & > a {
-    color: ${cores.salmon};
+    color: ${colors.salmon};
     text-decoration: none;
   }
 

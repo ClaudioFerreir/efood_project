@@ -3,25 +3,17 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
+import { parseToBrl } from '../../utils'
+
 import { remove } from '../../store/reducers/cart'
+import { RootReducer } from '../../store'
 
 import Button from '../../Components/Button'
 import Sidebar from '../../Components/Sidebar'
-import { formataPreco } from '../../Components/FoodCard'
 
 import { usePurchaseMutation } from '../../services/api'
-import { RootReducer } from '../../store'
 
-import {
-  ButtonContainer,
-  CartContainer,
-  CartItem,
-  CartItemContent,
-  CheckoutContainer,
-  InputGroup,
-  Price,
-  Row
-} from './styles'
+import * as S from './styles'
 
 type currentScreenState = 'cart' | 'delivery' | 'payment'
 
@@ -134,7 +126,7 @@ const Cart = () => {
       <>
         {isSuccess ? (
           <div>
-            <CheckoutContainer>
+            <S.CheckoutContainer>
               <h2>Pedido realizado - {data.orderId}</h2>
               <p className="margin-bottom">
                 Estamos felizes em informar que seu pedido já está em processo
@@ -149,56 +141,56 @@ const Cart = () => {
                 gastronômica. Bom apetite!
               </p>
               <Button title="Conluir">Concluir</Button>
-            </CheckoutContainer>
+            </S.CheckoutContainer>
           </div>
         ) : (
           <div>
             <div>
               {currentScreen === 'cart' && (
-                <CartContainer
+                <S.CartContainer
                   style={{
                     display: currentScreen === 'cart' ? 'block' : 'none'
                   }}
                 >
                   <ul>
                     {items.map((item) => (
-                      <CartItem key={item.id}>
+                      <S.CartItem key={item.id}>
                         <img src={item.foto} />
-                        <CartItemContent>
+                        <S.CartItemContent>
                           <h3>{item.nome}</h3>
-                          <p>{formataPreco(item.preco)}</p>
-                        </CartItemContent>
+                          <p>{parseToBrl(item.preco)}</p>
+                        </S.CartItemContent>
                         <button
                           type="button"
                           onClick={() => removeItem(item.id)}
                         />
-                      </CartItem>
+                      </S.CartItem>
                     ))}
                   </ul>
-                  <Price>
+                  <S.Price>
                     <p>Valor total</p>
-                    <span>{formataPreco(getTotalPrice())}</span>
-                  </Price>
+                    <span>{parseToBrl(getTotalPrice())}</span>
+                  </S.Price>
                   <Button
                     title="siga para a entrega"
                     onClick={() => setCurrrentScreen('delivery')}
                   >
                     Continuar com a entrega
                   </Button>
-                </CartContainer>
+                </S.CartContainer>
               )}
             </div>
             <form onSubmit={form.handleSubmit}>
               <div>
                 {currentScreen === 'delivery' && (
-                  <CheckoutContainer
+                  <S.CheckoutContainer
                     style={{
                       display: currentScreen === 'delivery' ? 'block' : 'none'
                     }}
                   >
                     <h2>Entrega</h2>
-                    <Row>
-                      <InputGroup>
+                    <S.Row>
+                      <S.InputGroup>
                         <label htmlFor="receiver">Quem irá receber</label>
                         <input
                           type="text"
@@ -211,10 +203,10 @@ const Cart = () => {
                         <small>
                           {getErrorMessage('receiver', form.errors.receiver)}
                         </small>
-                      </InputGroup>
-                    </Row>
-                    <Row>
-                      <InputGroup>
+                      </S.InputGroup>
+                    </S.Row>
+                    <S.Row>
+                      <S.InputGroup>
                         <label htmlFor="addressDescription">Endereço</label>
                         <input
                           type="text"
@@ -230,10 +222,10 @@ const Cart = () => {
                             form.errors.addressDescription
                           )}
                         </small>
-                      </InputGroup>
-                    </Row>
-                    <Row>
-                      <InputGroup>
+                      </S.InputGroup>
+                    </S.Row>
+                    <S.Row>
+                      <S.InputGroup>
                         <label htmlFor="addressCity">Cidade</label>
                         <input
                           type="text"
@@ -249,10 +241,10 @@ const Cart = () => {
                             form.errors.addressCity
                           )}
                         </small>
-                      </InputGroup>
-                    </Row>
-                    <Row>
-                      <InputGroup>
+                      </S.InputGroup>
+                    </S.Row>
+                    <S.Row>
+                      <S.InputGroup>
                         <label htmlFor="addressZipCode">CEP</label>
                         <input
                           type="text"
@@ -268,8 +260,8 @@ const Cart = () => {
                             form.errors.addressZipCode
                           )}
                         </small>
-                      </InputGroup>
-                      <InputGroup>
+                      </S.InputGroup>
+                      <S.InputGroup>
                         <label htmlFor="addressNumber">Número</label>
                         <input
                           type="text"
@@ -285,10 +277,10 @@ const Cart = () => {
                             form.errors.addressNumber
                           )}
                         </small>
-                      </InputGroup>
-                    </Row>
-                    <Row>
-                      <InputGroup>
+                      </S.InputGroup>
+                    </S.Row>
+                    <S.Row>
+                      <S.InputGroup>
                         <label htmlFor="addressComplement">
                           Complemento (opcional)
                         </label>
@@ -306,9 +298,9 @@ const Cart = () => {
                             form.errors.addressComplement
                           )}
                         </small>
-                      </InputGroup>
-                    </Row>
-                    <ButtonContainer>
+                      </S.InputGroup>
+                    </S.Row>
+                    <S.ButtonContainer>
                       <Button
                         title="Continuar com o pagamento"
                         onClick={
@@ -325,18 +317,18 @@ const Cart = () => {
                       >
                         Voltar para o carrinho
                       </Button>
-                    </ButtonContainer>
-                  </CheckoutContainer>
+                    </S.ButtonContainer>
+                  </S.CheckoutContainer>
                 )}
               </div>
               <div>
                 {currentScreen === 'payment' && (
-                  <CheckoutContainer>
+                  <S.CheckoutContainer>
                     <h2>
-                      Pagamento - Valor a pagar {formataPreco(getTotalPrice())}
+                      Pagamento - Valor a pagar {parseToBrl(getTotalPrice())}
                     </h2>
-                    <Row>
-                      <InputGroup>
+                    <S.Row>
+                      <S.InputGroup>
                         <label htmlFor="paymentCardName">Nome no cartão</label>
                         <input
                           type="text"
@@ -352,10 +344,10 @@ const Cart = () => {
                             form.errors.paymentCardName
                           )}
                         </small>
-                      </InputGroup>
-                    </Row>
-                    <Row>
-                      <InputGroup>
+                      </S.InputGroup>
+                    </S.Row>
+                    <S.Row>
+                      <S.InputGroup>
                         <label htmlFor="paymentCardNumber">
                           Número do cartão
                         </label>
@@ -373,8 +365,8 @@ const Cart = () => {
                             form.errors.paymentCardNumber
                           )}
                         </small>
-                      </InputGroup>
-                      <InputGroup $maxWidth="87px">
+                      </S.InputGroup>
+                      <S.InputGroup $maxWidth="87px">
                         <label htmlFor="paymentCardCode">CVV</label>
                         <input
                           type="text"
@@ -390,10 +382,10 @@ const Cart = () => {
                             form.errors.paymentCardCode
                           )}
                         </small>
-                      </InputGroup>
-                    </Row>
-                    <Row>
-                      <InputGroup>
+                      </S.InputGroup>
+                    </S.Row>
+                    <S.Row>
+                      <S.InputGroup>
                         <label htmlFor="paymentCardExpiresMonth">
                           Mês de vencimento
                         </label>
@@ -411,8 +403,8 @@ const Cart = () => {
                             form.errors.paymentCardExpiresMonth
                           )}
                         </small>
-                      </InputGroup>
-                      <InputGroup>
+                      </S.InputGroup>
+                      <S.InputGroup>
                         <label htmlFor="paymentCardExpiresYear">
                           Ano de vencimento
                         </label>
@@ -430,9 +422,9 @@ const Cart = () => {
                             form.errors.paymentCardExpiresYear
                           )}
                         </small>
-                      </InputGroup>
-                    </Row>
-                    <ButtonContainer>
+                      </S.InputGroup>
+                    </S.Row>
+                    <S.ButtonContainer>
                       <Button
                         title="Finalizar o pagamento"
                         onClick={form.handleSubmit}
@@ -445,8 +437,8 @@ const Cart = () => {
                       >
                         Voltar para a edição de endereço
                       </Button>
-                    </ButtonContainer>
-                  </CheckoutContainer>
+                    </S.ButtonContainer>
+                  </S.CheckoutContainer>
                 )}
               </div>
             </form>

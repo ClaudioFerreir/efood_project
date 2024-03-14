@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 import { TagContainer } from '../Tag/styles'
 
 export const Card = styled.div`
-  border: 1px solid ${cores.salmon};
+  border: 1px solid ${colors.salmon};
   position: relative;
   height: 100%;
   font-weight: 700;
@@ -15,10 +15,10 @@ export const Card = styled.div`
 
   a {
     display: inline-block;
-    background-color: ${cores.salmon};
+    background-color: ${colors.salmon};
     padding: 4px 6px;
     text-decoration: none;
-    color: ${cores.ligthYellow};
+    color: ${colors.ligthYellow};
     font-size: 14px;
     align-self: flex-start;
   }

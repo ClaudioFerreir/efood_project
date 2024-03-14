@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 
 //Hero banner
 
@@ -63,8 +63,8 @@ export const Card = styled.li`
   flex-direction: column;
   height: 338px;
   width: 320px;
-  background-color: ${cores.salmon};
-  color: ${cores.ligthYellow};
+  background-color: ${colors.salmon};
+  color: ${colors.ligthYellow};
   padding: 8px;
   justify-content: space-between;
 
@@ -81,8 +81,8 @@ export const Card = styled.li`
   }
 
   button {
-    background-color: ${cores.ligthYellow};
-    color: ${cores.salmon};
+    background-color: ${colors.ligthYellow};
+    color: ${colors.salmon};
     border: none;
     font-size: 14px;
     font-weight: 700;
@@ -152,9 +152,9 @@ export const Modal = styled.div`
 `
 
 export const ModalContainer = styled.div`
-  background-color: ${cores.salmon};
+  background-color: ${colors.salmon};
   height: 344px;
-  color: ${cores.ligthYellow};
+  color: ${colors.ligthYellow};
   display: flex;
   padding: 32px;
   z-index: 1;
