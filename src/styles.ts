@@ -2,7 +2,8 @@ import { createGlobalStyle } from 'styled-components'
 
 export const colors = {
   salmon: '#E66767',
-  ligthYellow: '#FFEBD9'
+  ligthYellow: '#FFEBD9',
+  red: '#FF4D4F'
 }
 
 export const breakpoints = {

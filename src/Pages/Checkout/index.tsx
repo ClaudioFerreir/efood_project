@@ -28,7 +28,10 @@ const Cart = () => {
 
   const getTotalPrice = () => {
     return items.reduce((acc, item) => {
-      return (acc += item.preco!)
+      if (item.preco) {
+        return (acc += item.preco)
+      }
+      return 0
     }, 0)
   }
 
@@ -101,9 +104,9 @@ const Cart = () => {
   const getErrorMessage = (fieldName: string, message?: string) => {
     const isTouched = fieldName in form.touched
     const isInvalid = fieldName in form.errors
+    const hasError = isTouched && isInvalid
 
-    if (isTouched && isInvalid) return message
-    return ''
+    return [hasError, hasError ? message || '' : '']
   }
 
   const FormDeliveryValid = () => {
@@ -199,9 +202,12 @@ const Cart = () => {
                           value={form.values.receiver}
                           onChange={form.handleChange}
                           onBlur={form.handleBlur}
+                          className={
+                            getErrorMessage('receiver')[0] ? 'error' : ''
+                          }
                         />
                         <small>
-                          {getErrorMessage('receiver', form.errors.receiver)}
+                          {getErrorMessage('receiver', form.errors.receiver)[1]}
                         </small>
                       </S.InputGroup>
                     </S.Row>
@@ -215,12 +221,19 @@ const Cart = () => {
                           value={form.values.addressDescription}
                           onChange={form.handleChange}
                           onBlur={form.handleBlur}
+                          className={
+                            getErrorMessage('addressDescription')[0]
+                              ? 'error'
+                              : ''
+                          }
                         />
                         <small>
-                          {getErrorMessage(
-                            'addressDescription',
-                            form.errors.addressDescription
-                          )}
+                          {
+                            getErrorMessage(
+                              'addressDescription',
+                              form.errors.addressDescription
+                            )[1]
+                          }
                         </small>
                       </S.InputGroup>
                     </S.Row>
@@ -234,12 +247,17 @@ const Cart = () => {
                           value={form.values.addressCity}
                           onChange={form.handleChange}
                           onBlur={form.handleBlur}
+                          className={
+                            getErrorMessage('addressCity')[0] ? 'error' : ''
+                          }
                         />
                         <small>
-                          {getErrorMessage(
-                            'addressCity',
-                            form.errors.addressCity
-                          )}
+                          {
+                            getErrorMessage(
+                              'addressCity',
+                              form.errors.addressCity
+                            )[1]
+                          }
                         </small>
                       </S.InputGroup>
                     </S.Row>
@@ -253,12 +271,17 @@ const Cart = () => {
                           value={form.values.addressZipCode}
                           onChange={form.handleChange}
                           onBlur={form.handleBlur}
+                          className={
+                            getErrorMessage('addressZipCode')[0] ? 'error' : ''
+                          }
                         />
                         <small>
-                          {getErrorMessage(
-                            'addressZipCode',
-                            form.errors.addressZipCode
-                          )}
+                          {
+                            getErrorMessage(
+                              'addressZipCode',
+                              form.errors.addressZipCode
+                            )[1]
+                          }
                         </small>
                       </S.InputGroup>
                       <S.InputGroup>
@@ -270,12 +293,17 @@ const Cart = () => {
                           value={form.values.addressNumber}
                           onChange={form.handleChange}
                           onBlur={form.handleBlur}
+                          className={
+                            getErrorMessage('addressNumber')[0] ? 'error' : ''
+                          }
                         />
                         <small>
-                          {getErrorMessage(
-                            'addressNumber',
-                            form.errors.addressNumber
-                          )}
+                          {
+                            getErrorMessage(
+                              'addressNumber',
+                              form.errors.addressNumber
+                            )[1]
+                          }
                         </small>
                       </S.InputGroup>
                     </S.Row>
@@ -291,12 +319,19 @@ const Cart = () => {
                           value={form.values.addressComplement}
                           onChange={form.handleChange}
                           onBlur={form.handleBlur}
+                          className={
+                            getErrorMessage('addressComplement')[0]
+                              ? 'error'
+                              : ''
+                          }
                         />
                         <small>
-                          {getErrorMessage(
-                            'addressComplement',
-                            form.errors.addressComplement
-                          )}
+                          {
+                            getErrorMessage(
+                              'addressComplement',
+                              form.errors.addressComplement
+                            )[1]
+                          }
                         </small>
                       </S.InputGroup>
                     </S.Row>
@@ -337,12 +372,17 @@ const Cart = () => {
                           value={form.values.paymentCardName}
                           onChange={form.handleChange}
                           onBlur={form.handleBlur}
+                          className={
+                            getErrorMessage('paymentCardName')[0] ? 'error' : ''
+                          }
                         />
                         <small>
-                          {getErrorMessage(
-                            'paymentCardName',
-                            form.errors.paymentCardName
-                          )}
+                          {
+                            getErrorMessage(
+                              'paymentCardName',
+                              form.errors.paymentCardName
+                            )[1]
+                          }
                         </small>
                       </S.InputGroup>
                     </S.Row>
@@ -358,12 +398,19 @@ const Cart = () => {
                           value={form.values.paymentCardNumber}
                           onChange={form.handleChange}
                           onBlur={form.handleBlur}
+                          className={
+                            getErrorMessage('paymentCardNumber')[0]
+                              ? 'error'
+                              : ''
+                          }
                         />
                         <small>
-                          {getErrorMessage(
-                            'paymentCardNumber',
-                            form.errors.paymentCardNumber
-                          )}
+                          {
+                            getErrorMessage(
+                              'paymentCardNumber',
+                              form.errors.paymentCardNumber
+                            )[1]
+                          }
                         </small>
                       </S.InputGroup>
                       <S.InputGroup $maxWidth="87px">
@@ -375,12 +422,17 @@ const Cart = () => {
                           value={form.values.paymentCardCode}
                           onChange={form.handleChange}
                           onBlur={form.handleBlur}
+                          className={
+                            getErrorMessage('paymentCardCode')[0] ? 'error' : ''
+                          }
                         />
                         <small>
-                          {getErrorMessage(
-                            'paymentCardCode',
-                            form.errors.paymentCardCode
-                          )}
+                          {
+                            getErrorMessage(
+                              'paymentCardCode',
+                              form.errors.paymentCardCode
+                            )[1]
+                          }
                         </small>
                       </S.InputGroup>
                     </S.Row>
@@ -396,12 +448,19 @@ const Cart = () => {
                           value={form.values.paymentCardExpiresMonth}
                           onChange={form.handleChange}
                           onBlur={form.handleBlur}
+                          className={
+                            getErrorMessage('paymentCardExpiresMonth')[0]
+                              ? 'error'
+                              : ''
+                          }
                         />
                         <small>
-                          {getErrorMessage(
-                            'paymentCardExpiresMonth',
-                            form.errors.paymentCardExpiresMonth
-                          )}
+                          {
+                            getErrorMessage(
+                              'paymentCardExpiresMonth',
+                              form.errors.paymentCardExpiresMonth
+                            )[1]
+                          }
                         </small>
                       </S.InputGroup>
                       <S.InputGroup>
@@ -415,12 +474,19 @@ const Cart = () => {
                           value={form.values.paymentCardExpiresYear}
                           onChange={form.handleChange}
                           onBlur={form.handleBlur}
+                          className={
+                            getErrorMessage('paymentCardExpiresYear')[0]
+                              ? 'error'
+                              : ''
+                          }
                         />
                         <small>
-                          {getErrorMessage(
-                            'paymentCardExpiresYear',
-                            form.errors.paymentCardExpiresYear
-                          )}
+                          {
+                            getErrorMessage(
+                              'paymentCardExpiresYear',
+                              form.errors.paymentCardExpiresYear
+                            )[1]
+                          }
                         </small>
                       </S.InputGroup>
                     </S.Row>

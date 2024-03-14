@@ -96,6 +96,9 @@ export const InputGroup = styled.div<InputGroupProps>`
     border: 1px solid ${colors.ligthYellow};
     font-weight: 700;
     font-size: 14px;
+
+    &.error {
+      border: 3px solid ${colors.red};
     }
   }
 
