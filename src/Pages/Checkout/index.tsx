@@ -6,6 +6,7 @@ import * as Yup from 'yup'
 import { parseToBrl } from '../../utils'
 
 import { remove } from '../../store/reducers/cart'
+import { close } from '../../store/reducers/cart'
 import { RootReducer } from '../../store'
 
 import Button from '../../Components/Button'
@@ -17,7 +18,7 @@ import * as S from './styles'
 
 type currentScreenState = 'cart' | 'delivery' | 'payment'
 
-const Cart = () => {
+const Checkout = () => {
   const { items } = useSelector((state: RootReducer) => state.cart)
   const [currentScreen, setCurrrentScreen] =
     useState<currentScreenState>('cart')
@@ -26,6 +27,10 @@ const Cart = () => {
 
   const dispatch = useDispatch()
 
+  const closeCart = () => {
+    dispatch(close())
+  }
+
   const getTotalPrice = () => {
     return items.reduce((acc, item) => {
       if (item.preco) {
@@ -33,6 +38,13 @@ const Cart = () => {
       }
       return 0
     }, 0)
+  }
+
+  const cartHasItems = () => {
+    if (items.length > 0) {
+      return () => setCurrrentScreen('delivery')
+    }
+    return closeCart()
   }
 
   const removeItem = (id: number) => {
@@ -174,10 +186,7 @@ const Cart = () => {
                     <p>Valor total</p>
                     <span>{parseToBrl(getTotalPrice())}</span>
                   </S.Price>
-                  <Button
-                    title="siga para a entrega"
-                    onClick={() => setCurrrentScreen('delivery')}
-                  >
+                  <Button title="siga para a entrega" onClick={cartHasItems}>
                     Continuar com a entrega
                   </Button>
                 </S.CartContainer>
@@ -515,4 +524,4 @@ const Cart = () => {
   )
 }
 
-export default Cart
+export default Checkout

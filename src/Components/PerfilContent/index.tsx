@@ -6,7 +6,7 @@ import { useGetRestaurantIdQuery } from '../../services/api'
 
 import * as S from './styles'
 
-const PerfilHero = () => {
+const PerfilContent = () => {
   const { id } = useParams()
 
   const { data: restaurantInfo } = useGetRestaurantIdQuery(id!)
@@ -30,4 +30,4 @@ const PerfilHero = () => {
   )
 }
 
-export default PerfilHero
+export default PerfilContent
