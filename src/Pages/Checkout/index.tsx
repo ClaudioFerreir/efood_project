@@ -42,7 +42,7 @@ const Checkout = () => {
 
   const cartHasItems = () => {
     if (items.length > 0) {
-      return () => setCurrrentScreen('delivery')
+      return setCurrrentScreen('delivery')
     }
     return closeCart()
   }
