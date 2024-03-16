@@ -1,18 +1,23 @@
 import { useParams } from 'react-router-dom'
 
 import FoodCard from '../FoodList'
+import Loader from '../Loader'
 
 import { useGetRestaurantIdQuery } from '../../services/api'
 
 import * as S from './styles'
 
-const PerfilContent = () => {
-  const { id } = useParams()
+type restautantParams = {
+  id: string
+}
 
-  const { data: restaurantInfo } = useGetRestaurantIdQuery(id!)
+const PerfilContent = () => {
+  const { id } = useParams() as restautantParams
+
+  const { data: restaurantInfo } = useGetRestaurantIdQuery(id)
 
   if (!restaurantInfo) {
-    return <h3>Carregando...</h3>
+    return <Loader />
   }
 
   return (

@@ -120,6 +120,7 @@ export const CloseTag = styled.img`
   position: absolute;
   top: 8px;
   right: 8px;
+  cursor: pointer;
 `
 
 export const FoodImg = styled.img`
