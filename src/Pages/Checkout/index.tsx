@@ -22,7 +22,7 @@ const Checkout = () => {
   const [currentScreen, setCurrrentScreen] =
     useState<currentScreenState>('cart')
 
-  const [purchase, { data, isSuccess }] = usePurchaseMutation()
+  const [purchase, { data, isSuccess, isLoading }] = usePurchaseMutation()
 
   const dispatch = useDispatch()
 
@@ -147,7 +147,7 @@ const Checkout = () => {
       <S.Overlay onClick={backToShopping} />
       <S.SidebarContent>
         <>
-          {isSuccess ? (
+          {isSuccess && data ? (
             <div>
               <S.CheckoutContainer>
                 <h2>Pedido realizado - {data.orderId}</h2>
@@ -525,8 +525,11 @@ const Checkout = () => {
                         <Button
                           title="Finalizar o pagamento"
                           onClick={form.handleSubmit}
+                          disabled={isLoading}
                         >
-                          Finalizar pagamento
+                          {isLoading
+                            ? 'Finalizando compra...'
+                            : 'Finalizar compra'}
                         </Button>
                         <Button
                           title="Voltar para edição de endereço"
