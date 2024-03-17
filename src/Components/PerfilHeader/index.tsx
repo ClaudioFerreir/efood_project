@@ -30,10 +30,18 @@ const PerfilHeader = () => {
           <MdHome size={32} />
         </S.LinkMobile>
         <img src={logo} alt="efood logo" />
-        <S.CartButton title="Ir para o carrinho" onClick={openCart}>
+        <S.CartButton
+          role="button"
+          title="Ir para o carrinho"
+          onClick={openCart}
+        >
           <span>{items.length}</span>&nbsp; produto(s) no carrinho
         </S.CartButton>
-        <S.CartMobile title="Ir para o carrinho" onClick={openCart}>
+        <S.CartMobile
+          role="button"
+          title="Ir para o carrinho"
+          onClick={openCart}
+        >
           <span>{items.length}</span>
           <FaShoppingCart size={24} />
         </S.CartMobile>
