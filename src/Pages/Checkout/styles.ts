@@ -48,6 +48,13 @@ export const CartContainer = styled.div`
   &.is-delivery-open {
     display: none;
   }
+
+  .empty-text {
+    text-align: center;
+    color: ${colors.ligthYellow};
+    line-height: 22px;
+    line-weight: 700;
+  }
 `
 
 export const CartItem = styled.li`

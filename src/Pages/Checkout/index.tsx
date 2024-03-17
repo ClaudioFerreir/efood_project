@@ -176,28 +176,40 @@ const Checkout = () => {
                       display: currentScreen === 'cart' ? 'block' : 'none'
                     }}
                   >
-                    <ul>
-                      {items.map((item) => (
-                        <S.CartItem key={item.id}>
-                          <img src={item.foto} />
-                          <S.CartItemContent>
-                            <h3>{item.nome}</h3>
-                            <p>{parseToBrl(item.preco)}</p>
-                          </S.CartItemContent>
-                          <button
-                            type="button"
-                            onClick={() => removeItem(item.id)}
-                          />
-                        </S.CartItem>
-                      ))}
-                    </ul>
-                    <S.Price>
-                      <p>Valor total</p>
-                      <span>{parseToBrl(getTotalPrice())}</span>
-                    </S.Price>
-                    <Button title="siga para a entrega" onClick={cartHasItems}>
-                      Continuar com a entrega
-                    </Button>
+                    {items.length > 0 ? (
+                      <>
+                        <ul>
+                          {items.map((item) => (
+                            <S.CartItem key={item.id}>
+                              <img src={item.foto} />
+                              <S.CartItemContent>
+                                <h3>{item.nome}</h3>
+                                <p>{parseToBrl(item.preco)}</p>
+                              </S.CartItemContent>
+                              <button
+                                type="button"
+                                onClick={() => removeItem(item.id)}
+                              />
+                            </S.CartItem>
+                          ))}
+                        </ul>
+                        <S.Price>
+                          <p>Valor total</p>
+                          <span>{parseToBrl(getTotalPrice())}</span>
+                        </S.Price>
+                        <Button
+                          title="siga para a entrega"
+                          onClick={cartHasItems}
+                        >
+                          Continuar com a entrega
+                        </Button>
+                      </>
+                    ) : (
+                      <p className="empty-text">
+                        O carrinho está vazio, adicione pelo menos um item para
+                        continuar a compra
+                      </p>
+                    )}
                   </S.CartContainer>
                 )}
               </div>
