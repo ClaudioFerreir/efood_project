@@ -5,7 +5,6 @@ import { add, open } from '../../store/reducers/cart'
 import { parseToBrl } from '../../utils'
 
 import Button from '../Button'
-import { CardapioItem } from '../../Pages/Home'
 
 import zoom from '../../assets/icons/zoom.png'
 import closeIcon from '../../assets/icons/fechar.png'

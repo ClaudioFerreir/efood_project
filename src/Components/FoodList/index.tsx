@@ -1,4 +1,3 @@
-import { CardapioItem } from '../../Pages/Home'
 import FoodCard from '../FoodCard'
 
 import { ListContainer } from './styles'

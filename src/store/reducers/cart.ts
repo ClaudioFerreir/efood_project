@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { CardapioItem } from '../../Pages/Home'
 
 type CartState = {
   items: CardapioItem[]
