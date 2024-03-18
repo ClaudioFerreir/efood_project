@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
@@ -6,7 +6,7 @@ import InputMask from 'react-input-mask'
 
 import { parseToBrl } from '../../utils'
 
-import { remove } from '../../store/reducers/cart'
+import { clear, remove } from '../../store/reducers/cart'
 import { close } from '../../store/reducers/cart'
 import { RootReducer } from '../../store'
 
@@ -46,6 +46,12 @@ const Checkout = () => {
     }
     return closeCart()
   }
+
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(clear())
+    }
+  }, [isSuccess, dispatch])
 
   const backToShopping = () => {
     if (currentScreen === 'cart') {
@@ -163,7 +169,9 @@ const Checkout = () => {
                   Esperamos que desfrute de uma deliciosa e agradável
                   experiência gastronômica. Bom apetite!
                 </p>
-                <Button title="Conluir">Concluir</Button>
+                <Button onClick={() => closeCart()} title="Conluir">
+                  Concluir
+                </Button>
               </S.CheckoutContainer>
             </div>
           ) : (

@@ -150,5 +150,6 @@ export const Description = styled.div`
 
   button {
     margin-top: 16px;
+    width: auto;
   }
 `
