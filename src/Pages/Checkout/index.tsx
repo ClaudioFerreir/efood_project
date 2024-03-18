@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import InputMask from 'react-input-mask'
 
 import { parseToBrl } from '../../utils'
 
@@ -299,7 +300,7 @@ const Checkout = () => {
                       <S.Row>
                         <S.InputGroup>
                           <label htmlFor="addressZipCode">CEP</label>
-                          <input
+                          <InputMask
                             type="text"
                             id="addressZipCode"
                             name="addressZipCode"
@@ -311,6 +312,7 @@ const Checkout = () => {
                                 ? 'error'
                                 : ''
                             }
+                            mask="99999-999"
                           />
                           <small>
                             {
@@ -432,7 +434,7 @@ const Checkout = () => {
                           <label htmlFor="paymentCardNumber">
                             Número do cartão
                           </label>
-                          <input
+                          <InputMask
                             type="text"
                             id="paymentCardNumber"
                             name="paymentCardNumber"
@@ -444,6 +446,7 @@ const Checkout = () => {
                                 ? 'error'
                                 : ''
                             }
+                            mask="9999 9999 9999 9999"
                           />
                           <small>
                             {
@@ -456,7 +459,7 @@ const Checkout = () => {
                         </S.InputGroup>
                         <S.InputGroup $maxWidth="87px">
                           <label htmlFor="paymentCardCode">CVV</label>
-                          <input
+                          <InputMask
                             type="text"
                             id="paymentCardCode"
                             name="paymentCardCode"
@@ -468,6 +471,7 @@ const Checkout = () => {
                                 ? 'error'
                                 : ''
                             }
+                            mask="999"
                           />
                           <small>
                             {
@@ -484,7 +488,7 @@ const Checkout = () => {
                           <label htmlFor="paymentCardExpiresMonth">
                             Mês de vencimento
                           </label>
-                          <input
+                          <InputMask
                             type="text"
                             id="paymentCardExpiresMonth"
                             name="paymentCardExpiresMonth"
@@ -496,6 +500,7 @@ const Checkout = () => {
                                 ? 'error'
                                 : ''
                             }
+                            mask="99"
                           />
                           <small>
                             {
@@ -510,7 +515,7 @@ const Checkout = () => {
                           <label htmlFor="paymentCardExpiresYear">
                             Ano de vencimento
                           </label>
-                          <input
+                          <InputMask
                             type="text"
                             id="paymentCardExpiresYear"
                             name="paymentCardExpiresYear"
@@ -522,6 +527,7 @@ const Checkout = () => {
                                 ? 'error'
                                 : ''
                             }
+                            mask="9999"
                           />
                           <small>
                             {
