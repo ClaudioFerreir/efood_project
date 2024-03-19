@@ -137,7 +137,7 @@ export const InputGroup = styled.div<InputGroupProps>`
 
   input {
     width: 100%;
-    margin: 8px 0;
+    margin-top: 8px;
     padding: 8px;
     background-color: ${colors.ligthYellow};
     border: 1px solid ${colors.ligthYellow};
@@ -145,13 +145,13 @@ export const InputGroup = styled.div<InputGroupProps>`
     font-size: 14px;
 
     &.error {
-      border: 3px solid ${colors.red};
+      border: 1px solid ${colors.red};
     }
   }
 
   small {
     display: block;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
   }
 `
 
