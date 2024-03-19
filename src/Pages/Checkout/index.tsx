@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import InputMask from 'react-input-mask'
+import { useNavigate } from 'react-router-dom'
 
 import { parseToBrl } from '../../utils'
 
@@ -26,6 +27,7 @@ const Checkout = () => {
   const [purchase, { data, isSuccess, isLoading }] = usePurchaseMutation()
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const closeCart = () => {
     dispatch(close())
@@ -58,6 +60,12 @@ const Checkout = () => {
       return closeCart()
     }
     return null
+  }
+
+  const resetAndRedirect = () => {
+    dispatch(clear())
+    navigate('/')
+    closeCart()
   }
 
   const removeItem = (id: number) => {
@@ -169,7 +177,7 @@ const Checkout = () => {
                   Esperamos que desfrute de uma deliciosa e agradável
                   experiência gastronômica. Bom apetite!
                 </p>
-                <Button onClick={() => closeCart()} title="Conluir">
+                <Button onClick={resetAndRedirect} title="Concluir">
                   Concluir
                 </Button>
               </S.CheckoutContainer>
