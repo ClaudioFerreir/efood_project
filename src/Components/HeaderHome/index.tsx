@@ -5,7 +5,9 @@ import * as S from './styles'
 
 const HeaderHome = () => (
   <S.Image style={{ backgroundImage: `url(${bannerImg})` }}>
-    <img src={logo} alt="efood logo" />
+    <h1>
+      <img src={logo} alt="EFOOD" />
+    </h1>
     <S.Title>Viva experiências gastronômicas no conforto da sua casa</S.Title>
   </S.Image>
 )
