@@ -45,6 +45,9 @@ export const SidebarContent = styled.aside`
 `
 
 export const CartContainer = styled.div`
+  overflow-y: auto;
+  max-height: calc(100vh - 56px);
+
   &.is-delivery-open {
     display: none;
   }
