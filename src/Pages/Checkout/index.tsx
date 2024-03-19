@@ -23,7 +23,7 @@ const Checkout = () => {
   const [currentScreen, setCurrrentScreen] =
     useState<currentScreenState>('cart')
 
-  const [purchase, { data, isSuccess }] = usePurchaseMutation()
+  const [purchase, { data, isSuccess, isLoading }] = usePurchaseMutation()
 
   const dispatch = useDispatch()
 
@@ -152,7 +152,7 @@ const Checkout = () => {
       <S.Overlay onClick={backToShopping} />
       <S.SidebarContent>
         <>
-          {isSuccess ? (
+          {isSuccess && data ? (
             <div>
               <S.CheckoutContainer>
                 <h2>Pedido realizado - {data.orderId}</h2>
@@ -183,28 +183,40 @@ const Checkout = () => {
                       display: currentScreen === 'cart' ? 'block' : 'none'
                     }}
                   >
-                    <ul>
-                      {items.map((item) => (
-                        <S.CartItem key={item.id}>
-                          <img src={item.foto} />
-                          <S.CartItemContent>
-                            <h3>{item.nome}</h3>
-                            <p>{parseToBrl(item.preco)}</p>
-                          </S.CartItemContent>
-                          <button
-                            type="button"
-                            onClick={() => removeItem(item.id)}
-                          />
-                        </S.CartItem>
-                      ))}
-                    </ul>
-                    <S.Price>
-                      <p>Valor total</p>
-                      <span>{parseToBrl(getTotalPrice())}</span>
-                    </S.Price>
-                    <Button title="siga para a entrega" onClick={cartHasItems}>
-                      Continuar com a entrega
-                    </Button>
+                    {items.length > 0 ? (
+                      <>
+                        <ul>
+                          {items.map((item) => (
+                            <S.CartItem key={item.id}>
+                              <img src={item.foto} />
+                              <S.CartItemContent>
+                                <h3>{item.nome}</h3>
+                                <p>{parseToBrl(item.preco)}</p>
+                              </S.CartItemContent>
+                              <button
+                                type="button"
+                                onClick={() => removeItem(item.id)}
+                              />
+                            </S.CartItem>
+                          ))}
+                        </ul>
+                        <S.Price>
+                          <p>Valor total</p>
+                          <span>{parseToBrl(getTotalPrice())}</span>
+                        </S.Price>
+                        <Button
+                          title="siga para a entrega"
+                          onClick={cartHasItems}
+                        >
+                          Continuar com a entrega
+                        </Button>
+                      </>
+                    ) : (
+                      <p className="empty-text">
+                        O carrinho está vazio, adicione pelo menos um item para
+                        continuar a compra
+                      </p>
+                    )}
                   </S.CartContainer>
                 )}
               </div>
@@ -537,8 +549,11 @@ const Checkout = () => {
                         <Button
                           title="Finalizar o pagamento"
                           onClick={form.handleSubmit}
+                          disabled={isLoading}
                         >
-                          Finalizar pagamento
+                          {isLoading
+                            ? 'Finalizando compra...'
+                            : 'Finalizar compra'}
                         </Button>
                         <Button
                           title="Voltar para edição de endereço"

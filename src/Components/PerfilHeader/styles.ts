@@ -47,7 +47,7 @@ export const LinkMobile = styled(Link)`
   }
 `
 
-export const CartButton = styled.a`
+export const CartButton = styled.span`
   display: flex;
   justify-self: flex-end;
   cursor: pointer;
@@ -57,7 +57,7 @@ export const CartButton = styled.a`
   }
 `
 
-export const CartMobile = styled.a`
+export const CartMobile = styled.span`
   display: none;
   text-align: right;
   justify-self: flex-end;
